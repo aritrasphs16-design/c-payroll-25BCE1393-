@@ -16,7 +16,6 @@
     padding: 20px;
   }
 
-  /* ── HEADER ── */
   .header {
     text-align: center;
     padding: 30px 20px 20px;
@@ -44,12 +43,8 @@
     background-clip: text;
     margin-bottom: 8px;
   }
-  .header p {
-    color: #94a3b8;
-    font-size: 14px;
-  }
+  .header p { color: #94a3b8; font-size: 14px; }
 
-  /* ── STATS BAR ── */
   .stats-bar {
     display: flex;
     justify-content: center;
@@ -67,125 +62,51 @@
     min-width: 130px;
     transition: all 0.3s;
   }
-  .stat-card:hover {
-    background: rgba(255,255,255,0.08);
-    transform: translateY(-2px);
-  }
-  .stat-card .stat-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: #a5b4fc;
-  }
-  .stat-card .stat-label {
-    font-size: 11px;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
+  .stat-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  .stat-card .stat-num { font-size: 28px; font-weight: 700; color: #a5b4fc; }
+  .stat-card .stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-  /* ── LAYOUT ── */
-  .layout {
-    display: flex;
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: flex-start;
-  }
+  .layout { display: flex; gap: 24px; max-width: 1200px; margin: 0 auto; align-items: flex-start; }
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    width: 240px;
-    flex-shrink: 0;
-  }
-  .sidebar-title {
-    font-size: 11px;
-    font-weight: 600;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-    padding-left: 12px;
-  }
+  .sidebar { width: 240px; flex-shrink: 0; }
+  .sidebar-title { font-size: 11px; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; padding-left: 12px; }
   .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    padding: 13px 16px;
-    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 13px 16px; margin-bottom: 6px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    color: #94a3b8;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.2s;
+    border-radius: 12px; color: #94a3b8;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+    cursor: pointer; text-align: left; transition: all 0.2s;
   }
-  .nav-btn:hover {
-    background: rgba(99,102,241,0.15);
-    border-color: rgba(99,102,241,0.3);
-    color: #a5b4fc;
-    transform: translateX(4px);
-  }
-  .nav-btn.active {
-    background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3));
-    border-color: rgba(99,102,241,0.5);
-    color: #fff;
-  }
-  .nav-btn .icon {
-    font-size: 16px;
-    width: 20px;
-    text-align: center;
-  }
-  .nav-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-    margin: 10px 0;
-  }
+  .nav-btn:hover { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.3); color: #a5b4fc; transform: translateX(4px); }
+  .nav-btn.active { background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3)); border-color: rgba(99,102,241,0.5); color: #fff; }
+  .nav-btn .icon { font-size: 16px; width: 20px; text-align: center; }
+  .nav-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 10px 0; }
 
-  /* ── MAIN PANEL ── */
   .main-panel { flex: 1; min-width: 0; }
 
-  /* ── TERMINAL ── */
   .terminal-wrapper {
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 20px;
+    border-radius: 16px; overflow: hidden; margin-bottom: 20px;
   }
   .terminal-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     padding: 12px 16px;
     background: rgba(255,255,255,0.03);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot-red   { background: #ff5f57; }
-  .dot-yellow{ background: #febc2e; }
-  .dot-green { background: #28c840; }
-  .terminal-title {
-    margin-left: 8px;
-    font-size: 12px;
-    color: #475569;
-    font-weight: 500;
-  }
+  .dot-red    { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green  { background: #28c840; }
+  .terminal-title { margin-left: 8px; font-size: 12px; color: #475569; font-weight: 500; }
   .terminal-body {
-    padding: 16px;
-    min-height: 280px;
-    max-height: 380px;
-    overflow-y: auto;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    line-height: 1.7;
-    color: #e2e8f0;
+    padding: 16px; min-height: 280px; max-height: 500px;
+    overflow-y: auto; font-family: 'Courier New', monospace;
+    font-size: 13px; line-height: 1.7; color: #e2e8f0;
   }
   .terminal-body::-webkit-scrollbar { width: 4px; }
   .terminal-body::-webkit-scrollbar-track { background: transparent; }
@@ -198,131 +119,58 @@
   .t-divider { color: #334155; }
   .t-value   { color: #fbbf24; }
 
-  /* ── FORM CARD ── */
   .form-card {
     background: rgba(255,255,255,0.04);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 28px;
-    display: none;
+    border-radius: 20px; padding: 28px; display: none;
     animation: slideUp 0.3s ease;
   }
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .form-card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #e2e8f0;
-    margin-bottom: 6px;
-  }
-  .form-card .form-subtitle {
-    font-size: 12px;
-    color: #475569;
-    margin-bottom: 24px;
-  }
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
+  .form-card h3 { font-size: 18px; font-weight: 600; color: #e2e8f0; margin-bottom: 6px; }
+  .form-card .form-subtitle { font-size: 12px; color: #475569; margin-bottom: 24px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
   .form-grid.single { grid-template-columns: 1fr; }
   .form-group { display: flex; flex-direction: column; }
   .form-group.full { grid-column: 1 / -1; }
-  .form-group label {
-    font-size: 11px;
-    font-weight: 600;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
+  .form-group label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
   .form-group input {
     padding: 12px 16px;
     background: rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    color: #e2e8f0;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    transition: all 0.2s;
-    outline: none;
+    border-radius: 10px; color: #e2e8f0;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    transition: all 0.2s; outline: none;
   }
-  .form-group input:focus {
-    border-color: rgba(99,102,241,0.6);
-    background: rgba(99,102,241,0.08);
-    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
-  }
+  .form-group input:focus { border-color: rgba(99,102,241,0.6); background: rgba(99,102,241,0.08); box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
   .form-group input::placeholder { color: #334155; }
 
-  /* ── BUTTONS ── */
   .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   .btn {
-    padding: 11px 24px;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    padding: 11px 24px; border: none; border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
   }
-  .btn-primary {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102,126,234,0.4);
-  }
-  .btn-danger {
-    background: linear-gradient(135deg, #f87171, #ef4444);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(239,68,68,0.3);
-  }
-  .btn-danger:hover { transform: translateY(-2px); }
-  .btn-ghost {
-    background: rgba(255,255,255,0.06);
-    color: #94a3b8;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.1); color: #e2e8f0; }
-  .btn-success {
-    background: linear-gradient(135deg, #4ade80, #22c55e);
-    color: #000;
-    box-shadow: 0 4px 15px rgba(74,222,128,0.3);
-  }
+  .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+  .btn-danger  { background: linear-gradient(135deg, #f87171, #ef4444); color: #fff; box-shadow: 0 4px 15px rgba(239,68,68,0.3); }
+  .btn-danger:hover  { transform: translateY(-2px); }
+  .btn-ghost   { background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.08); }
+  .btn-ghost:hover   { background: rgba(255,255,255,0.1); color: #e2e8f0; }
+  .btn-success { background: linear-gradient(135deg, #4ade80, #22c55e); color: #000; box-shadow: 0 4px 15px rgba(74,222,128,0.3); }
   .btn-success:hover { transform: translateY(-2px); }
 
-  /* ── MSG ── */
-  .msg {
-    margin-top: 14px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    display: none;
-  }
+  .msg { margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 13px; display: none; }
   .msg.error   { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: #f87171; display: block; }
   .msg.success { background: rgba(74,222,128,0.1);  border: 1px solid rgba(74,222,128,0.3);  color: #4ade80;  display: block; }
 
-  /* ── HIDDEN FIELDS ── */
   #updateFields { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
 
-  /* ── FOOTER ── */
-  .footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    color: #1e293b;
-    font-size: 12px;
-  }
+  .footer { text-align: center; margin-top: 40px; padding: 20px; color: #1e293b; font-size: 12px; }
 </style>
 </head>
 <body>
@@ -360,32 +208,16 @@
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-title">Menu</div>
-    <button class="nav-btn" onclick="showForm('addForm')" id="btn1">
-      <span class="icon">➕</span> Add Employee
-    </button>
-    <button class="nav-btn" onclick="viewAll()" id="btn2">
-      <span class="icon">👥</span> View All
-    </button>
-    <button class="nav-btn" onclick="showForm('searchForm')" id="btn3">
-      <span class="icon">🔍</span> Search
-    </button>
-    <button class="nav-btn" onclick="showForm('updateForm')" id="btn4">
-      <span class="icon">✏️</span> Update
-    </button>
-    <button class="nav-btn" onclick="showForm('deleteForm')" id="btn5">
-      <span class="icon">🗑️</span> Delete
-    </button>
+    <button class="nav-btn" onclick="showForm('addForm')"><span class="icon">➕</span> Add Employee</button>
+    <button class="nav-btn" onclick="viewAll()"><span class="icon">👥</span> View All</button>
+    <button class="nav-btn" onclick="showForm('searchForm')"><span class="icon">🔍</span> Search</button>
+    <button class="nav-btn" onclick="showForm('updateForm')"><span class="icon">✏️</span> Update</button>
+    <button class="nav-btn" onclick="showForm('deleteForm')"><span class="icon">🗑️</span> Delete</button>
     <div class="nav-divider"></div>
-    <button class="nav-btn" onclick="showForm('payslipForm')" id="btn6">
-      <span class="icon">🧾</span> Payslip
-    </button>
-    <button class="nav-btn" onclick="fullReport()" id="btn7">
-      <span class="icon">📊</span> Full Report
-    </button>
+    <button class="nav-btn" onclick="showForm('payslipForm')"><span class="icon">🧾</span> Payslip</button>
+    <button class="nav-btn" onclick="fullReport()"><span class="icon">📊</span> Full Report</button>
     <div class="nav-divider"></div>
-    <button class="nav-btn" onclick="clearTerminal()">
-      <span class="icon">🔄</span> Clear Screen
-    </button>
+    <button class="nav-btn" onclick="clearTerminal()"><span class="icon">🔄</span> Clear Screen</button>
   </div>
 
   <!-- MAIN PANEL -->
@@ -399,8 +231,7 @@
         <div class="dot dot-green"></div>
         <span class="terminal-title">payroll-system ~ output</span>
       </div>
-      <div class="terminal-body" id="terminal">
-      </div>
+      <div class="terminal-body" id="terminal"></div>
     </div>
 
     <!-- ADD FORM -->
@@ -431,7 +262,7 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="addEmployee()">➕ Add Employee</button>
-        <button class="btn btn-ghost" onclick="hideForm()">Cancel</button>
+        <button class="btn btn-ghost"   onclick="hideForm()">Cancel</button>
       </div>
       <div class="msg" id="addMsg"></div>
     </div>
@@ -448,7 +279,7 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="searchEmployee()">🔍 Search</button>
-        <button class="btn btn-ghost" onclick="hideForm()">Cancel</button>
+        <button class="btn btn-ghost"   onclick="hideForm()">Cancel</button>
       </div>
     </div>
 
@@ -464,7 +295,7 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="loadForUpdate()">📂 Load Employee</button>
-        <button class="btn btn-ghost" onclick="hideForm()">Cancel</button>
+        <button class="btn btn-ghost"   onclick="hideForm()">Cancel</button>
       </div>
       <div id="updateFields">
         <div class="form-grid">
@@ -496,7 +327,7 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-danger" onclick="deleteEmployee()">🗑️ Delete</button>
-        <button class="btn btn-ghost" onclick="hideForm()">Cancel</button>
+        <button class="btn btn-ghost"  onclick="hideForm()">Cancel</button>
       </div>
       <div class="msg" id="deleteMsg"></div>
     </div>
@@ -513,19 +344,17 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="generatePayslip()">🧾 Generate</button>
-        <button class="btn btn-ghost" onclick="hideForm()">Cancel</button>
+        <button class="btn btn-ghost"   onclick="hideForm()">Cancel</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<div class="footer">
-  Employee Payroll System • C Mini Project DA1 • VIT
-</div>
+<div class="footer">Employee Payroll System • C Mini Project DA1 • VIT</div>
 
 <script>
-  // ── Data ────────────────────────────────────────────
+  // ── Data ─────────────────────────────────────────────
   var employees = JSON.parse(localStorage.getItem('payroll_v2') || '[]');
 
   function save() {
@@ -537,7 +366,7 @@
     return employees.findIndex(e => e.empId === id);
   }
 
-  // ── Stats ────────────────────────────────────────────
+  // ── Stats ─────────────────────────────────────────────
   function updateStats() {
     var tg = 0, tn = 0;
     employees.forEach(e => { tg += e.grossPay; tn += e.netPay; });
@@ -547,7 +376,7 @@
     document.getElementById('statAvg').textContent   = employees.length > 0 ? (tn/employees.length).toFixed(0) : '0';
   }
 
-  // ── Terminal ─────────────────────────────────────────
+  // ── Terminal ──────────────────────────────────────────
   function print(text, cls) {
     var t = document.getElementById('terminal');
     var line = document.createElement('div');
@@ -562,7 +391,7 @@
     print('Screen cleared. Select an option from the menu.', 't-info');
   }
 
-  // ── Forms ────────────────────────────────────────────
+  // ── Forms ─────────────────────────────────────────────
   function showForm(id) {
     document.querySelectorAll('.form-card').forEach(f => f.style.display='none');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -578,7 +407,7 @@
     document.querySelectorAll('.form-card').forEach(f => f.style.display='none');
   }
 
-  // ── Tax ──────────────────────────────────────────────
+  // ── Tax ───────────────────────────────────────────────
   function computeTax(g) {
     if      (g <= 10000) return 0;
     else if (g <= 20000) return g * 0.05;
@@ -593,14 +422,20 @@
     else                 return '20%';
   }
 
-  // ── ADD ──────────────────────────────────────────────
+  // ── Helper ────────────────────────────────────────────
+  function setMsg(id, type, text) {
+    var el = document.getElementById(id);
+    el.className = 'msg ' + type;
+    el.textContent = text;
+  }
+
+  // ── ADD ──────────────────────────���────────────────────
   function addEmployee() {
     var id    = parseInt(document.getElementById('add_id').value);
     var name  = document.getElementById('add_name').value.trim();
     var basic = parseFloat(document.getElementById('add_basic').value);
     var ot    = parseFloat(document.getElementById('add_ot').value) || 0;
     var rate  = parseFloat(document.getElementById('add_rate').value) || 150;
-    var msg   = document.getElementById('addMsg');
 
     if (!id || id <= 0)      { setMsg('addMsg','error','❌ Invalid Employee ID!'); return; }
     if (!name)               { setMsg('addMsg','error','❌ Name cannot be empty!'); return; }
@@ -618,46 +453,95 @@
     print('', '');
     print('  ✅ EMPLOYEE ADDED SUCCESSFULLY', 't-success');
     print('  ─────────────────────────────────────', 't-divider');
-    print('  ID       : ' + id + '   Name : ' + name, 't-info');
-    print('  Basic    : Rs.' + basic.toFixed(2) + '   OT : ' + ot + 'h × Rs.' + rate, '');
-    print('  Gross    : Rs.' + gross.toFixed(2) + '   Tax Slab : ' + taxSlab(gross), 't-value');
+    print('  ID       : ' + id + '   |   Name : ' + name, 't-info');
+    print('  Basic    : Rs.' + basic.toFixed(2) + '   |   OT : ' + ot + 'h × Rs.' + rate, '');
+    print('  Gross    : Rs.' + gross.toFixed(2) + '   |   Tax Slab : ' + taxSlab(gross), 't-value');
     print('  Tax      : Rs.' + tax.toFixed(2), 't-error');
     print('  Net Pay  : Rs.' + net.toFixed(2), 't-success');
     print('  ─────────────────────────────────────', 't-divider');
 
-    setMsg('addMsg','success','✅ Employee added! Total: ' + employees.length);
-    document.getElementById('add_id').value='';
-    document.getElementById('add_name').value='';
-    document.getElementById('add_basic').value='';
-    document.getElementById('add_ot').value='0';
-    document.getElementById('add_rate').value='150';
+    setMsg('addMsg','success','✅ Employee added! Total employees: ' + employees.length);
+    document.getElementById('add_id').value    = '';
+    document.getElementById('add_name').value  = '';
+    document.getElementById('add_basic').value = '';
+    document.getElementById('add_ot').value    = '0';
+    document.getElementById('add_rate').value  = '150';
   }
 
-  // ── VIEW ALL ─────────────────────────────────────────
+  // ── VIEW ALL ──────────────────────────────────────────
   function viewAll() {
     hideForm();
-    if (employees.length === 0) { print('  [INFO] No employee records found.', 't-info'); return; }
-    print('', '');
-    print('  👥 ALL EMPLOYEES', 't-header');
-    print('  ' + '─'.repeat(74), 't-divider');
-    print('  ' + 'ID'.padEnd(7) + 'Name'.padEnd(20) + 'Basic'.padEnd(12) + 'OT Hrs'.padEnd(9) + 'Gross'.padEnd(13) + 'Tax'.padEnd(10) + 'Net Pay', 't-info');
-    print('  ' + '─'.repeat(74), 't-divider');
-    employees.forEach(e => {
-      print('  ' +
-        String(e.empId).padEnd(7) +
-        e.name.substring(0,18).padEnd(20) +
-        ('Rs.'+e.basicPay.toFixed(0)).padEnd(12) +
-        String(e.otHours).padEnd(9) +
-        ('Rs.'+e.grossPay.toFixed(0)).padEnd(13) +
-        ('Rs.'+e.taxDeduction.toFixed(0)).padEnd(10) +
-        'Rs.'+e.netPay.toFixed(2), 't-value');
-    });
-    print('  ' + '─'.repeat(74), 't-divider');
-    print('  Total Employees: ' + employees.length, 't-success');
-    print('', '');
+    var t = document.getElementById('terminal');
+    if (employees.length === 0) {
+      print('  [INFO] No employee records found.', 't-info'); return;
+    }
+
+    var old = document.getElementById('viewAllTable');
+    if (old) old.remove();
+
+    var div = document.createElement('div');
+    div.id = 'viewAllTable';
+    div.style.cssText = 'margin:16px 0; overflow-x:auto;';
+    div.innerHTML = `
+      <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:12px;">
+        👥 ALL EMPLOYEES — ${employees.length} record(s)
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;font-family:'Inter',sans-serif;">
+        <thead>
+          <tr style="background:rgba(99,102,241,0.3);">
+            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">ID</th>
+            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Name</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Basic Pay</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">OT Hrs</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">OT Rate</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Gross Pay</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Tax</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Net Pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${employees.map((e,idx) => `
+            <tr style="background:${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'};transition:background 0.2s;"
+                onmouseover="this.style.background='rgba(99,102,241,0.12)'"
+                onmouseout="this.style.background='${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'}'">
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#60a5fa;font-weight:700;">${e.empId}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#e2e8f0;font-weight:500;">${e.name}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#cbd5e1;">Rs.${e.basicPay.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#cbd5e1;">${e.otHours}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#cbd5e1;">Rs.${e.otRate}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#fbbf24;font-weight:600;">Rs.${e.grossPay.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#f87171;">Rs.${e.taxDeduction.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#4ade80;font-weight:700;">Rs.${e.netPay.toFixed(2)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+        <tfoot>
+          <tr style="background:rgba(99,102,241,0.25);font-weight:700;">
+            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">
+              TOTALS (${employees.length} employees)
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#cbd5e1;">
+              Rs.${employees.reduce((s,e)=>s+e.basicPay,0).toFixed(2)}
+            </td>
+            <td colspan="2" style="border:1px solid rgba(99,102,241,0.4);"></td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">
+              Rs.${employees.reduce((s,e)=>s+e.grossPay,0).toFixed(2)}
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">
+              Rs.${employees.reduce((s,e)=>s+e.taxDeduction,0).toFixed(2)}
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">
+              Rs.${employees.reduce((s,e)=>s+e.netPay,0).toFixed(2)}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    `;
+    t.appendChild(div);
+    t.scrollTop = t.scrollHeight;
   }
 
-  // ── SEARCH ───────────────────────────────────────────
+  // ── SEARCH ────────────────────────────────────────────
   function searchEmployee() {
     var id = parseInt(document.getElementById('search_id').value);
     var i  = findById(id);
@@ -666,18 +550,18 @@
     print('', '');
     print('  🔍 SEARCH RESULT', 't-header');
     print('  ─────────────────────────────────────', 't-divider');
-    print('  ID       : ' + e.empId, 't-info');
-    print('  Name     : ' + e.name, 't-info');
-    print('  Basic Pay: Rs.' + e.basicPay.toFixed(2), '');
+    print('  ID       : ' + e.empId,                        't-info');
+    print('  Name     : ' + e.name,                         't-info');
+    print('  Basic Pay: Rs.' + e.basicPay.toFixed(2),       '');
     print('  OT Hours : ' + e.otHours + ' hrs @ Rs.' + e.otRate + '/hr', '');
-    print('  Gross Pay: Rs.' + e.grossPay.toFixed(2), 't-value');
-    print('  Tax (' + taxSlab(e.grossPay) + '): Rs.' + e.taxDeduction.toFixed(2), 't-error');
-    print('  Net Pay  : Rs.' + e.netPay.toFixed(2), 't-success');
+    print('  Gross Pay: Rs.' + e.grossPay.toFixed(2),       't-value');
+    print('  Tax (' + taxSlab(e.grossPay) + ')  : Rs.' + e.taxDeduction.toFixed(2), 't-error');
+    print('  Net Pay  : Rs.' + e.netPay.toFixed(2),         't-success');
     print('  ─────────────────────────────────────', 't-divider');
     hideForm();
   }
 
-  // ── UPDATE ───────────────────────────────────────────
+  // ── UPDATE ────────────────────────────────────────────
   function loadForUpdate() {
     var id = parseInt(document.getElementById('upd_id').value);
     var i  = findById(id);
@@ -685,7 +569,7 @@
     document.getElementById('upd_basic').value = employees[i].basicPay;
     document.getElementById('upd_ot').value    = employees[i].otHours;
     document.getElementById('updateFields').style.display = 'block';
-    setMsg('updateMsg','success','✅ Employee loaded. Edit and save.');
+    setMsg('updateMsg','success','✅ Employee loaded. Edit the fields and save.');
   }
 
   function updateEmployee() {
@@ -701,29 +585,29 @@
     employees[i].netPay       = employees[i].grossPay - employees[i].taxDeduction;
     save();
     print('', '');
-    print('  ✅ EMPLOYEE ' + id + ' UPDATED', 't-success');
-    print('  New Gross : Rs.' + employees[i].grossPay.toFixed(2), 't-value');
-    print('  New Tax   : Rs.' + employees[i].taxDeduction.toFixed(2), 't-error');
-    print('  New Net   : Rs.' + employees[i].netPay.toFixed(2), 't-success');
+    print('  ✅ EMPLOYEE ' + id + ' UPDATED SUCCESSFULLY', 't-success');
+    print('  New Gross Pay : Rs.' + employees[i].grossPay.toFixed(2),     't-value');
+    print('  New Tax       : Rs.' + employees[i].taxDeduction.toFixed(2), 't-error');
+    print('  New Net Pay   : Rs.' + employees[i].netPay.toFixed(2),       't-success');
     print('', '');
-    setMsg('updateMsg','success','✅ Updated successfully!');
-    document.getElementById('updateFields').style.display='none';
+    setMsg('updateMsg','success','✅ Record updated successfully!');
+    document.getElementById('updateFields').style.display = 'none';
   }
 
-  // ── DELETE ───────────────────────────────────────────
+  // ── DELETE ────────────────────────────────────────────
   function deleteEmployee() {
-    var id  = parseInt(document.getElementById('del_id').value);
-    var i   = findById(id);
+    var id   = parseInt(document.getElementById('del_id').value);
+    var i    = findById(id);
     if (i === -1) { setMsg('deleteMsg','error','❌ Employee '+id+' not found!'); return; }
     var name = employees[i].name;
-    if (!confirm('Delete ' + name + ' (ID: '+id+')? This cannot be undone.')) return;
+    if (!confirm('Delete ' + name + ' (ID: '+id+')?\nThis cannot be undone.')) return;
     employees.splice(i, 1);
     save();
-    print('  🗑️ Employee ' + id + ' (' + name + ') deleted.', 't-error');
+    print('  🗑️ Employee ' + id + ' (' + name + ') deleted successfully.', 't-error');
     setMsg('deleteMsg','success','✅ Deleted successfully!');
   }
 
-  // ── PAYSLIP ──────────────────────────────────────────
+  // ── PAYSLIP ───────────────────────────────────────────
   function generatePayslip() {
     var id = parseInt(document.getElementById('slip_id').value);
     var i  = findById(id);
@@ -731,64 +615,130 @@
     var e = employees[i];
     print('', '');
     print('  ╔══════════════════════════════════════╗', 't-header');
-    print('  ║           SALARY PAYSLIP             ║', 't-header');
+    print('  ║           SALARY  PAYSLIP            ║', 't-header');
     print('  ╚══════════════════════════════════════╝', 't-header');
-    print('  Emp ID   : ' + e.empId + '     Name : ' + e.name, 't-info');
-    print('  ────────────────────────────────────────', 't-divider');
-    print('  EARNINGS', 't-header');
-    print('  Basic Pay          Rs.' + e.basicPay.toFixed(2).padStart(10), '');
-    print('  OT (' + e.otHours + 'h × Rs.' + e.otRate + ')   Rs.' + (e.otHours*e.otRate).toFixed(2).padStart(10), '');
-    print('  GROSS PAY          Rs.' + e.grossPay.toFixed(2).padStart(10), 't-value');
-    print('  ────────────────────────────────────────', 't-divider');
-    print('  DEDUCTIONS', 't-header');
-    print('  Tax (' + taxSlab(e.grossPay) + ')           Rs.' + e.taxDeduction.toFixed(2).padStart(10), 't-error');
-    print('  ────────────────────────────────────────', 't-divider');
-    print('  NET PAY            Rs.' + e.netPay.toFixed(2).padStart(10), 't-success');
-    print('  ════════════════════════════════════════', 't-header');
+    print('  Emp ID : ' + e.empId + '     Name : ' + e.name,  't-info');
+    print('  ──────────────────────────────────────', 't-divider');
+    print('  EARNINGS',                                         't-header');
+    print('  Basic Pay              Rs.' + e.basicPay.toFixed(2),               '');
+    print('  OT (' + e.otHours + 'h × Rs.' + e.otRate + ')    Rs.' + (e.otHours*e.otRate).toFixed(2), '');
+    print('  ──────────────────────────────────────', 't-divider');
+    print('  GROSS PAY              Rs.' + e.grossPay.toFixed(2),               't-value');
+    print('  ──────────────────────────────────────', 't-divider');
+    print('  DEDUCTIONS',                                       't-header');
+    print('  Tax (' + taxSlab(e.grossPay) + ')             Rs.' + e.taxDeduction.toFixed(2), 't-error');
+    print('  ──────────────────────────────────────', 't-divider');
+    print('  NET PAY                Rs.' + e.netPay.toFixed(2),                 't-success');
+    print('  ══════════════════════════════════════', 't-header');
     print('', '');
     hideForm();
   }
 
-  // ── REPORT ───────────────────────────────────────────
+  // ── FULL REPORT ───────────────────────────────────────
   function fullReport() {
     hideForm();
-    if (employees.length === 0) { print('  [INFO] No records.', 't-info'); return; }
+    var t = document.getElementById('terminal');
+    if (employees.length === 0) {
+      print('  [INFO] No records found.', 't-info'); return;
+    }
+
+    var old = document.getElementById('reportTable');
+    if (old) old.remove();
+
     var tg=0, tt=0, tn=0;
-    print('', '');
-    print('  📊 FULL PAYROLL REPORT', 't-header');
-    print('  ' + '═'.repeat(60), 't-header');
-    print('  ' + 'ID'.padEnd(7) + 'Name'.padEnd(20) + 'Gross'.padEnd(14) + 'Tax'.padEnd(12) + 'Net Pay', 't-info');
-    print('  ' + '─'.repeat(60), 't-divider');
-    employees.forEach(e => {
-      print('  ' +
-        String(e.empId).padEnd(7) +
-        e.name.substring(0,18).padEnd(20) +
-        ('Rs.'+e.grossPay.toFixed(2)).padEnd(14) +
-        ('Rs.'+e.taxDeduction.toFixed(2)).padEnd(12) +
-        'Rs.'+e.netPay.toFixed(2), 't-value');
-      tg += e.grossPay; tt += e.taxDeduction; tn += e.netPay;
-    });
-    print('  ' + '─'.repeat(60), 't-divider');
-    print('  TOTALS'.padEnd(27) + ('Rs.'+tg.toFixed(2)).padEnd(14) + ('Rs.'+tt.toFixed(2)).padEnd(12) + 'Rs.'+tn.toFixed(2), 't-success');
-    print('  Average Net Pay : Rs.' + (tn/employees.length).toFixed(2), 't-success');
-    print('  Total Employees : ' + employees.length, 't-info');
-    print('  ' + '═'.repeat(60), 't-header');
-    print('', '');
+    employees.forEach(e => { tg+=e.grossPay; tt+=e.taxDeduction; tn+=e.netPay; });
+
+    var div = document.createElement('div');
+    div.id = 'reportTable';
+    div.style.cssText = 'margin:16px 0; overflow-x:auto;';
+    div.innerHTML = `
+      <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:14px;">
+        📊 FULL PAYROLL REPORT
+      </div>
+
+      <!-- Summary Cards -->
+      <div style="display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:110px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#a5b4fc;">${employees.length}</div>
+          <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Employees</div>
+        </div>
+        <div style="flex:1;min-width:110px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#fbbf24;">Rs.${tg.toFixed(0)}</div>
+          <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Gross</div>
+        </div>
+        <div style="flex:1;min-width:110px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#f87171;">Rs.${tt.toFixed(0)}</div>
+          <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Tax</div>
+        </div>
+        <div style="flex:1;min-width:110px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#4ade80;">Rs.${tn.toFixed(0)}</div>
+          <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Net</div>
+        </div>
+        <div style="flex:1;min-width:110px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.3);border-radius:12px;padding:14px;text-align:center;">
+          <div style="font-size:24px;font-weight:700;color:#60a5fa;">Rs.${(tn/employees.length).toFixed(0)}</div>
+          <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Avg Net Pay</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <table style="width:100%;border-collapse:collapse;font-size:13px;font-family:'Inter',sans-serif;">
+        <thead>
+          <tr style="background:rgba(99,102,241,0.3);">
+            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">ID</th>
+            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Name</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Gross Pay</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Tax</th>
+            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Net Pay</th>
+            <th style="padding:12px 14px;text-align:center;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Tax Slab</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${employees.map((e,idx) => `
+            <tr style="background:${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'};transition:background 0.2s;"
+                onmouseover="this.style.background='rgba(99,102,241,0.12)'"
+                onmouseout="this.style.background='${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'}'">
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#60a5fa;font-weight:700;">${e.empId}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#e2e8f0;font-weight:500;">${e.name}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#fbbf24;font-weight:600;">Rs.${e.grossPay.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#f87171;">Rs.${e.taxDeduction.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#4ade80;font-weight:700;">Rs.${e.netPay.toFixed(2)}</td>
+              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:center;">
+                <span style="background:rgba(99,102,241,0.25);color:#a5b4fc;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">
+                  ${taxSlab(e.grossPay)}
+                </span>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+        <tfoot>
+          <tr style="background:rgba(99,102,241,0.25);font-weight:700;">
+            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">
+              TOTALS
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">
+              Rs.${tg.toFixed(2)}
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">
+              Rs.${tt.toFixed(2)}
+            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">
+              Rs.${tn.toFixed(2)}
+            </td>
+            <td style="border:1px solid rgba(99,102,241,0.4);"></td>
+          </tr>
+        </tfoot>
+      </table>
+    `;
+    t.appendChild(div);
+    t.scrollTop = t.scrollHeight;
   }
 
-  // ── HELPER ───────────────────────────────────────────
-  function setMsg(id, type, text) {
-    var el = document.getElementById(id);
-    el.className = 'msg ' + type;
-    el.textContent = text;
-  }
-
-  // ── INIT ─────────────────────────────────────────────
+  // ── INIT ──────────────────────────────────────────────
   updateStats();
   print('  Welcome to Employee Payroll System', 't-header');
   print('  ─────────────────────────────────────', 't-divider');
-  print('  Loaded ' + employees.length + ' employee record(s).', 't-info');
-  print('  Select an option from the left menu.', '');
+  print('  Loaded ' + employees.length + ' employee record(s) from storage.', 't-info');
+  print('  Select an option from the left menu to get started.', '');
   print('', '');
 </script>
 </body>
