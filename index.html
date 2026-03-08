@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Payroll System</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Courier New', monospace; color: #eee; padding: 20px; }
+  h1 { text-align: center; color: #00ccff; padding: 15px; font-size: 22px; border-bottom: 2px solid #00ccff; margin-bottom: 20px; }
+  .container { display: flex; gap: 20px; max-width: 1100px; margin: auto; }
+  .menu { width: 220px; }
+  .menu button {
+    display: block; width: 100%; padding: 12px; margin-bottom: 8px;
+    background: #16213e; color: #00ff00; border: 1px solid #00ff00;
+    font-family: 'Courier New', monospace; font-size: 13px;
+    cursor: pointer; text-align: left; border-radius: 4px;
+  }
+  .menu button:hover { background: #00ff00; color: #000; }
+  .menu button.active { background: #00ff00; color: #000; }
+  .main { flex: 1; }
+  .terminal {
+    background: #000; color: #00ff00; padding: 15px;
+    min-height: 300px; border: 2px solid #00ff00;
+    font-size: 13px; white-space: pre-wrap; border-radius: 4px;
+    margin-bottom: 15px; max-height: 350px; overflow-y: auto;
+  }
+  .form-box {
+    background: #16213e; border: 1px solid #00ccff;
+    padding: 20px; border-radius: 8px; display: none;
+  }
+  .form-box h3 { color: #00ccff; margin-bottom: 15px; }
+  .form-row { margin-bottom: 12px; }
+  .form-row label { display: block; color: #aaa; font-size: 12px; margin-bottom: 4px; }
+  .form-row input {
+    width: 100%; padding: 8px; background: #000; color: #00ff00;
+    border: 1px solid #00ff00; font-family: 'Courier New', monospace;
+    font-size: 13px; border-radius: 3px;
+  }
+  .form-row input:focus { outline: none; border-color: #00ccff; }
+  .btn {
+    padding: 10px 25px; background: #00ff00; color: #000;
+    border: none; font-weight: bold; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 14px;
+    border-radius: 4px; margin-right: 8px;
+  }
+  .btn:hover { background: #00cc00; }
+  .btn-red { background: #ff4444; color: #fff; }
+  .btn-red:hover { background: #cc0000; }
+  .btn-blue { background: #00ccff; color: #000; }
+  .error { color: #ff4444; font-size: 13px; margin-top: 8px; }
+  .success { color: #00ff00; font-size: 13px; margin-top: 8px; }
+  #msgBox { margin-top: 8px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>🖥️ EMPLOYEE PAYROLL MANAGEMENT SYSTEM</h1>
+
+<div class="container">
+  <!-- MENU -->
+  <div class="menu">
+    <button onclick="showForm('addForm')" id="btn1">➕ 1. Add Employee</button>
+    <button onclick="viewAll()"          id="btn2">👁️ 2. View All</button>
+    <button onclick="showForm('searchForm')" id="btn3">🔍 3. Search</button>
+    <button onclick="showForm('updateForm')" id="btn4">✏️ 4. Update</button>
+    <button onclick="showForm('deleteForm')" id="btn5">🗑️ 5. Delete</button>
+    <button onclick="showForm('payslipForm')" id="btn6">🧾 6. Payslip</button>
+    <button onclick="fullReport()"       id="btn7">📊 7. Report</button>
+    <button onclick="clearTerminal()"    id="btn8">🔄 Clear Screen</button>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main">
+    <div class="terminal" id="terminal">Welcome to Employee Payroll System!
+Type choices from the menu on the left.
+=========================================
+</div>
+
+    <!-- ADD FORM -->
+    <div class="form-box" id="addForm">
+      <h3>➕ Add New Employee</h3>
+      <div class="form-row"><label>Employee ID *</label><input type="number" id="add_id" placeholder="e.g. 1001"></div>
+      <div class="form-row"><label>Full Name *</label><input type="text" id="add_name" placeholder="e.g. Ravi Kumar"></div>
+      <div class="form-row"><label>Basic Pay (Rs.) *</label><input type="number" id="add_basic" placeholder="e.g. 25000"></div>
+      <div class="form-row"><label>Overtime Hours</label><input type="number" id="add_ot" placeholder="e.g. 10 (0 if none)" value="0"></div>
+      <div class="form-row"><label>OT Rate per Hour (Rs.)</label><input type="number" id="add_rate" placeholder="e.g. 150" value="150"></div>
+      <button class="btn" onclick="addEmployee()">Add Employee</button>
+      <button class="btn btn-blue" onclick="hideForm()">Cancel</button>
+      <div id="addMsg"></div>
+    </div>
+
+    <!-- SEARCH FORM -->
+    <div class="form-box" id="searchForm">
+      <h3>🔍 Search Employee</h3>
+      <div class="form-row"><label>Employee ID</label><input type="number" id="search_id" placeholder="Enter Employee ID"></div>
+      <button class="btn" onclick="searchEmployee()">Search</button>
+      <button class="btn btn-blue" onclick="hideForm()">Cancel</button>
+    </div>
+
+    <!-- UPDATE FORM -->
+    <div class="form-box" id="updateForm">
+      <h3>✏️ Update Employee</h3>
+      <div class="form-row"><label>Employee ID to Update</label><input type="number" id="upd_id" placeholder="Enter ID"></div>
+      <button class="btn btn-blue" onclick="loadForUpdate()">Load Employee</button>
+      <div id="updateFields" style="display:none; margin-top:15px;">
+        <div class="form-row"><label>New Basic Pay (Rs.)</label><input type="number" id="upd_basic"></div>
+        <div class="form-row"><label>New OT Hours</label><input type="number" id="upd_ot"></div>
+        <button class="btn" onclick="updateEmployee()">Update</button>
+      </div>
+      <button class="btn btn-blue" onclick="hideForm()" style="margin-top:8px;">Cancel</button>
+      <div id="updateMsg"></div>
+    </div>
+
+    <!-- DELETE FORM -->
+    <div class="form-box" id="deleteForm">
+      <h3>🗑️ Delete Employee</h3>
+      <div class="form-row"><label>Employee ID to Delete</label><input type="number" id="del_id" placeholder="Enter Employee ID"></div>
+      <button class="btn btn-red" onclick="deleteEmployee()">Delete</button>
+      <button class="btn btn-blue" onclick="hideForm()">Cancel</button>
+      <div id="deleteMsg"></div>
+    </div>
+
+    <!-- PAYSLIP FORM -->
+    <div class="form-box" id="payslipForm">
+      <h3>🧾 Generate Payslip</h3>
+      <div class="form-row"><label>Employee ID</label><input type="number" id="slip_id" placeholder="Enter Employee ID"></div>
+      <button class="btn" onclick="generatePayslip()">Generate Payslip</button>
+      <button class="btn btn-blue" onclick="hideForm()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Data Store ──────────────────────────────────────
+var employees = JSON.parse(localStorage.getItem('payroll') || '[]');
+
+function save() {
+  localStorage.setItem('payroll', JSON.stringify(employees));
+}
+
+function findById(id) {
+  return employees.findIndex(e => e.empId === id);
+}
+
+// ── Terminal Output ─────────────────────────────────
+function print(text) {
+  var t = document.getElementById('terminal');
+  t.textContent += text + '\n';
+  t.scrollTop = t.scrollHeight;
+}
+
+function clearTerminal() {
+  document.getElementById('terminal').textContent = '';
+  print('Screen cleared.\n');
+}
+
+function showForm(id) {
+  document.querySelectorAll('.form-box').forEach(f => f.style.display='none');
+  document.getElementById(id).style.display = 'block';
+  // Clear messages
+  ['addMsg','updateMsg','deleteMsg'].forEach(m => {
+    var el = document.getElementById(m);
+    if(el) el.textContent='';
+  });
+}
+
+function hideForm() {
+  document.querySelectorAll('.form-box').forEach(f => f.style.display='none');
+}
+
+// ── Tax Calculation ─────────────────────────────────
+function computeTax(gross) {
+  if      (gross <= 10000) return 0;
+  else if (gross <= 20000) return gross * 0.05;
+  else if (gross <= 40000) return gross * 0.10;
+  else                     return gross * 0.20;
+}
+
+function taxSlab(gross) {
+  if      (gross <= 10000) return '0%  (<=Rs.10,000)';
+  else if (gross <= 20000) return '5%  (<=Rs.20,000)';
+  else if (gross <= 40000) return '10% (<=Rs.40,000)';
+  else                     return '20% (>Rs.40,000)';
+}
+
+// ── FUNCTION 1: Add Employee ────────────────────────
+function addEmployee() {
+  var id    = parseInt(document.getElementById('add_id').value);
+  var name  = document.getElementById('add_name').value.trim();
+  var basic = parseFloat(document.getElementById('add_basic').value);
+  var ot    = parseFloat(document.getElementById('add_ot').value) || 0;
+  var rate  = parseFloat(document.getElementById('add_rate').value) || 150;
+  var msg   = document.getElementById('addMsg');
+
+  if (!id || id <= 0)       { msg.className='error'; msg.textContent='❌ Invalid Employee ID!'; return; }
+  if (!name)                { msg.className='error'; msg.textContent='❌ Name cannot be empty!'; return; }
+  if (!basic || basic < 0)  { msg.className='error'; msg.textContent='❌ Invalid Basic Pay!'; return; }
+  if (ot < 0)               { msg.className='error'; msg.textContent='❌ OT Hours cannot be negative!'; return; }
+  if (findById(id) !== -1)  { msg.className='error'; msg.textContent='❌ Employee ID '+id+' already exists!'; return; }
+
+  var gross = basic + (ot * rate);
+  var tax   = computeTax(gross);
+  var net   = gross - tax;
+
+  employees.push({ empId: id, name: name, basicPay: basic, otHours: ot, otRate: rate, grossPay: gross, taxDeduction: tax, netPay: net });
+  save();
+
+  print('--- ADD EMPLOYEE ---');
+  print('[SUCCESS] Employee ' + id + ' (' + name + ') added!');
+  print('  Basic Pay : Rs.' + basic.toFixed(2));
+  print('  OT        : ' + ot + 'h x Rs.' + rate + ' = Rs.' + (ot*rate).toFixed(2));
+  print('  Gross Pay : Rs.' + gross.toFixed(2));
+  print('  Tax       : Rs.' + tax.toFixed(2) + ' (' + taxSlab(gross) + ')');
+  print('  Net Pay   : Rs.' + net.toFixed(2));
+  print('');
+
+  msg.className='success';
+  msg.textContent='✅ Employee added successfully!';
+
+  // Clear form
+  ['add_id','add_name','add_basic'].forEach(f => document.getElementById(f).value='');
+  document.getElementById('add_ot').value='0';
+  document.getElementById('add_rate').value='150';
+}
+
+// ── FUNCTION 2: View All ────────────────────────────
+function viewAll() {
+  hideForm();
+  if (employees.length === 0) { print('[INFO] No employee records found.\n'); return; }
+  print('--- VIEW ALL EMPLOYEES ---');
+  print('ID     Name               Basic      OT Hrs   Gross      Tax      Net Pay');
+  print('='.repeat(72));
+  employees.forEach(e => {
+    print(
+      String(e.empId).padEnd(7) +
+      e.name.padEnd(19) +
+      ('Rs.'+e.basicPay.toFixed(0)).padEnd(11) +
+      String(e.otHours).padEnd(9) +
+      ('Rs.'+e.grossPay.toFixed(0)).padEnd(11) +
+      ('Rs.'+e.taxDeduction.toFixed(0)).padEnd(9) +
+      'Rs.'+e.netPay.toFixed(2)
+    );
+  });
+  print('='.repeat(72));
+  print('Total Employees: ' + employees.length + '\n');
+}
+
+// ── FUNCTION 3: Search ──────────────────────────────
+function searchEmployee() {
+  var id = parseInt(document.getElementById('search_id').value);
+  var i  = findById(id);
+  if (i === -1) { print('[ERROR] Employee ID ' + id + ' not found!\n'); return; }
+  var e = employees[i];
+  print('--- SEARCH RESULT ---');
+  print('  ID       : ' + e.empId);
+  print('  Name     : ' + e.name);
+  print('  Basic Pay: Rs.' + e.basicPay.toFixed(2));
+  print('  OT Hours : ' + e.otHours + ' hrs');
+  print('  OT Rate  : Rs.' + e.otRate + '/hr');
+  print('  Gross Pay: Rs.' + e.grossPay.toFixed(2));
+  print('  Tax      : Rs.' + e.taxDeduction.toFixed(2));
+  print('  Net Pay  : Rs.' + e.netPay.toFixed(2));
+  print('');
+  hideForm();
+}
+
+// ── FUNCTION 4: Update ──────────────────────────────
+function loadForUpdate() {
+  var id = parseInt(document.getElementById('upd_id').value);
+  var i  = findById(id);
+  var msg = document.getElementById('updateMsg');
+  if (i === -1) { msg.className='error'; msg.textContent='❌ Employee '+id+' not found!'; return; }
+  document.getElementById('upd_basic').value = employees[i].basicPay;
+  document.getElementById('upd_ot').value    = employees[i].otHours;
+  document.getElementById('updateFields').style.display = 'block';
+  msg.className='success'; msg.textContent='✅ Employee loaded. Edit and click Update.';
+}
+
+function updateEmployee() {
+  var id    = parseInt(document.getElementById('upd_id').value);
+  var i     = findById(id);
+  var basic = parseFloat(document.getElementById('upd_basic').value);
+  var ot    = parseFloat(document.getElementById('upd_ot').value);
+  var msg   = document.getElementById('updateMsg');
+  if (i === -1) { msg.className='error'; msg.textContent='❌ Not found!'; return; }
+
+  employees[i].basicPay = basic;
+  employees[i].otHours  = ot;
+  employees[i].grossPay = basic + (ot * employees[i].otRate);
+  employees[i].taxDeduction = computeTax(employees[i].grossPay);
+  employees[i].netPay   = employees[i].grossPay - employees[i].taxDeduction;
+  save();
+
+  print('--- UPDATE ---');
+  print('[SUCCESS] Employee ' + id + ' updated!');
+  print('  New Gross : Rs.' + employees[i].grossPay.toFixed(2));
+  print('  New Tax   : Rs.' + employees[i].taxDeduction.toFixed(2));
+  print('  New Net   : Rs.' + employees[i].netPay.toFixed(2) + '\n');
+  msg.className='success'; msg.textContent='✅ Updated!';
+  document.getElementById('updateFields').style.display='none';
+}
+
+// ── FUNCTION 5: Delete ──────────────────────────────
+function deleteEmployee() {
+  var id  = parseInt(document.getElementById('del_id').value);
+  var i   = findById(id);
+  var msg = document.getElementById('deleteMsg');
+  if (i === -1) { msg.className='error'; msg.textContent='❌ Employee '+id+' not found!'; return; }
+  var name = employees[i].name;
+  if (!confirm('Delete employee ' + name + ' (ID: '+id+')? This cannot be undone.')) {
+    msg.textContent='Deletion cancelled.'; return;
+  }
+  employees.splice(i, 1);
+  save();
+  print('[SUCCESS] Employee ' + id + ' (' + name + ') deleted!\n');
+  msg.className='success'; msg.textContent='✅ Deleted!';
+}
+
+// ── FUNCTION 6: Payslip ─────────────────────────────
+function generatePayslip() {
+  var id = parseInt(document.getElementById('slip_id').value);
+  var i  = findById(id);
+  if (i === -1) { print('[ERROR] Employee ID ' + id + ' not found!\n'); return; }
+  var e = employees[i];
+  print('=========================================');
+  print('              PAYSLIP');
+  print('=========================================');
+  print('  Emp ID   : ' + e.empId);
+  print('  Name     : ' + e.name);
+  print('-----------------------------------------');
+  print('  EARNINGS');
+  print('  Basic Pay          : Rs.' + e.basicPay.toFixed(2));
+  print('  OT (' + e.otHours + 'h x Rs.' + e.otRate + ')  : Rs.' + (e.otHours*e.otRate).toFixed(2));
+  print('  GROSS PAY          : Rs.' + e.grossPay.toFixed(2));
+  print('-----------------------------------------');
+  print('  DEDUCTIONS');
+  print('  Tax Slab : ' + taxSlab(e.grossPay));
+  print('  Tax Amt  :           Rs.' + e.taxDeduction.toFixed(2));
+  print('-----------------------------------------');
+  print('  NET PAY  :           Rs.' + e.netPay.toFixed(2));
+  print('=========================================\n');
+  hideForm();
+}
+
+// ── FUNCTION 7: Report ──────────────────────────────
+function fullReport() {
+  hideForm();
+  if (employees.length === 0) { print('[INFO] No records.\n'); return; }
+  var tg=0, tt=0, tn=0;
+  print('=========================================');
+  print('         FULL PAYROLL REPORT');
+  print('=========================================');
+  print('ID     Name               Gross      Tax       Net Pay');
+  print('-'.repeat(57));
+  employees.forEach(e => {
+    print(
+      String(e.empId).padEnd(7) +
+      e.name.padEnd(19) +
+      ('Rs.'+e.grossPay.toFixed(2)).padEnd(11) +
+      ('Rs.'+e.taxDeduction.toFixed(2)).padEnd(10) +
+      'Rs.'+e.netPay.toFixed(2)
+    );
+    tg += e.grossPay; tt += e.taxDeduction; tn += e.netPay;
+  });
+  print('-'.repeat(57));
+  print('TOTALS'.padEnd(26) + ('Rs.'+tg.toFixed(2)).padEnd(11) + ('Rs.'+tt.toFixed(2)).padEnd(10) + 'Rs.'+tn.toFixed(2));
+  print('Average Net Pay : Rs.' + (tn/employees.length).toFixed(2));
+  print('Total Employees : ' + employees.length);
+  print('=========================================\n');
+}
+
+// Show saved count on load
+print('Loaded ' + employees.length + ' employee record(s) from storage.\n');
+</script>
+</body>
+</html>
