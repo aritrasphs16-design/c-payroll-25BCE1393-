@@ -43,7 +43,6 @@
     background-clip: text;
     margin-bottom: 8px;
   }
-  .header p { color: #94a3b8; font-size: 14px; }
 
   .stats-bar {
     display: flex;
@@ -170,7 +169,96 @@
 
   #updateFields { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
 
-  .footer { text-align: center; margin-top: 40px; padding: 20px; color: #1e293b; font-size: 12px; }
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 40px;
+    padding-bottom: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  .footer-brand .footer-logo {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .footer-brand p {
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 250px;
+  }
+  .footer-section h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+  .footer-section ul { list-style: none; }
+  .footer-section ul li {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-section ul li span { color: #a5b4fc; font-size: 12px; }
+  .footer-tech { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tech-tag {
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.25);
+    color: #a5b4fc;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom .copyright { font-size: 13px; color: #334155; }
+  .footer-bottom .copyright span { color: #64748b; }
+  .footer-bottom .copyright .heart { color: #f87171; }
+  .footer-made {
+    font-size: 12px;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-made .dot-live {
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
 </style>
 </head>
 <body>
@@ -179,7 +267,6 @@
 <div class="header">
   <div class="badge">⚡ WebAssembly Powered</div>
   <h1>Employee Payroll System</h1>
-  <p>C Mini Project — DA1 | VIT | Problem Solving using C</p>
 </div>
 
 <!-- STATS BAR -->
@@ -351,7 +438,66 @@
   </div>
 </div>
 
-<div class="footer">Employee Payroll System • C Mini Project DA1 • VIT</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-logo">⚡ PayrollSystem</div>
+      <p>A modern Employee Payroll Management System built with C and compiled to WebAssembly for the browser.</p>
+    </div>
+
+    <!-- Developer -->
+    <div class="footer-section">
+      <h4>Developer</h4>
+      <ul>
+        <li><span>👤</span> Aritra</li>
+        <li><span>🎓</span> Computer Science</li>
+        <li><span>🏛️</span> VIT University</li>
+        <li><span>📅</span> 2026</li>
+      </ul>
+    </div>
+
+    <!-- Features -->
+    <div class="footer-section">
+      <h4>Features</h4>
+      <ul>
+        <li><span>✅</span> Add / Update / Delete</li>
+        <li><span>✅</span> Search Employee</li>
+        <li><span>✅</span> Payslip Generator</li>
+        <li><span>✅</span> Full Payroll Report</li>
+      </ul>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="footer-section">
+      <h4>Built With</h4>
+      <div class="footer-tech">
+        <span class="tech-tag">C Language</span>
+        <span class="tech-tag">WebAssembly</span>
+        <span class="tech-tag">Emscripten</span>
+        <span class="tech-tag">HTML5</span>
+        <span class="tech-tag">CSS3</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">GitHub Pages</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="copyright">
+      © 2026 <span>Aritra</span>. All rights reserved.
+      Made with <span class="heart">♥</span> using C &amp; WebAssembly.
+    </div>
+    <div class="footer-made">
+      <div class="dot-live"></div>
+      Live on GitHub Pages
+    </div>
+  </div>
+</footer>
 
 <script>
   // ── Data ─────────────────────────────────────────────
@@ -429,7 +575,7 @@
     el.textContent = text;
   }
 
-  // ── ADD ──────────────────────────���────────────────────
+  // ── ADD ───────────────────────────────────────────────
   function addEmployee() {
     var id    = parseInt(document.getElementById('add_id').value);
     var name  = document.getElementById('add_name').value.trim();
@@ -475,7 +621,6 @@
     if (employees.length === 0) {
       print('  [INFO] No employee records found.', 't-info'); return;
     }
-
     var old = document.getElementById('viewAllTable');
     if (old) old.remove();
 
@@ -517,22 +662,12 @@
         </tbody>
         <tfoot>
           <tr style="background:rgba(99,102,241,0.25);font-weight:700;">
-            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">
-              TOTALS (${employees.length} employees)
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#cbd5e1;">
-              Rs.${employees.reduce((s,e)=>s+e.basicPay,0).toFixed(2)}
-            </td>
+            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">TOTALS (${employees.length} employees)</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#cbd5e1;">Rs.${employees.reduce((s,e)=>s+e.basicPay,0).toFixed(2)}</td>
             <td colspan="2" style="border:1px solid rgba(99,102,241,0.4);"></td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">
-              Rs.${employees.reduce((s,e)=>s+e.grossPay,0).toFixed(2)}
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">
-              Rs.${employees.reduce((s,e)=>s+e.taxDeduction,0).toFixed(2)}
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">
-              Rs.${employees.reduce((s,e)=>s+e.netPay,0).toFixed(2)}
-            </td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">Rs.${employees.reduce((s,e)=>s+e.grossPay,0).toFixed(2)}</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">Rs.${employees.reduce((s,e)=>s+e.taxDeduction,0).toFixed(2)}</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">Rs.${employees.reduce((s,e)=>s+e.netPay,0).toFixed(2)}</td>
           </tr>
         </tfoot>
       </table>
@@ -550,18 +685,18 @@
     print('', '');
     print('  🔍 SEARCH RESULT', 't-header');
     print('  ─────────────────────────────────────', 't-divider');
-    print('  ID       : ' + e.empId,                        't-info');
-    print('  Name     : ' + e.name,                         't-info');
-    print('  Basic Pay: Rs.' + e.basicPay.toFixed(2),       '');
-    print('  OT Hours : ' + e.otHours + ' hrs @ Rs.' + e.otRate + '/hr', '');
-    print('  Gross Pay: Rs.' + e.grossPay.toFixed(2),       't-value');
+    print('  ID       : ' + e.empId,                                        't-info');
+    print('  Name     : ' + e.name,                                         't-info');
+    print('  Basic Pay: Rs.' + e.basicPay.toFixed(2),                       '');
+    print('  OT Hours : ' + e.otHours + ' hrs @ Rs.' + e.otRate + '/hr',   '');
+    print('  Gross Pay: Rs.' + e.grossPay.toFixed(2),                       't-value');
     print('  Tax (' + taxSlab(e.grossPay) + ')  : Rs.' + e.taxDeduction.toFixed(2), 't-error');
-    print('  Net Pay  : Rs.' + e.netPay.toFixed(2),         't-success');
+    print('  Net Pay  : Rs.' + e.netPay.toFixed(2),                         't-success');
     print('  ─────────────────────────────────────', 't-divider');
     hideForm();
   }
 
-  // ── UPDATE ────────────────────────────────────────────
+  // ── UPDATE ───────────────────────────��────────────────
   function loadForUpdate() {
     var id = parseInt(document.getElementById('upd_id').value);
     var i  = findById(id);
@@ -617,19 +752,19 @@
     print('  ╔══════════════════════════════════════╗', 't-header');
     print('  ║           SALARY  PAYSLIP            ║', 't-header');
     print('  ╚══════════════════════════════════════╝', 't-header');
-    print('  Emp ID : ' + e.empId + '     Name : ' + e.name,  't-info');
-    print('  ──────────────────────────────────────', 't-divider');
-    print('  EARNINGS',                                         't-header');
-    print('  Basic Pay              Rs.' + e.basicPay.toFixed(2),               '');
+    print('  Emp ID : ' + e.empId + '     Name : ' + e.name,              't-info');
+    print('  ──────────────────────────────────────',                       't-divider');
+    print('  EARNINGS',                                                      't-header');
+    print('  Basic Pay              Rs.' + e.basicPay.toFixed(2),           '');
     print('  OT (' + e.otHours + 'h × Rs.' + e.otRate + ')    Rs.' + (e.otHours*e.otRate).toFixed(2), '');
-    print('  ──────────────────────────────────────', 't-divider');
-    print('  GROSS PAY              Rs.' + e.grossPay.toFixed(2),               't-value');
-    print('  ──────────────────────────────────────', 't-divider');
-    print('  DEDUCTIONS',                                       't-header');
+    print('  ──────────────────────────────────────',                       't-divider');
+    print('  GROSS PAY              Rs.' + e.grossPay.toFixed(2),           't-value');
+    print('  ──────────────────────────────────────',                       't-divider');
+    print('  DEDUCTIONS',                                                    't-header');
     print('  Tax (' + taxSlab(e.grossPay) + ')             Rs.' + e.taxDeduction.toFixed(2), 't-error');
-    print('  ──────────────────────────────────────', 't-divider');
-    print('  NET PAY                Rs.' + e.netPay.toFixed(2),                 't-success');
-    print('  ══════════════════════════════════════', 't-header');
+    print('  ──────────────────────────────────────',                       't-divider');
+    print('  NET PAY                Rs.' + e.netPay.toFixed(2),             't-success');
+    print('  ══════════════════════════════════════',                       't-header');
     print('', '');
     hideForm();
   }
@@ -638,9 +773,7 @@
   function fullReport() {
     hideForm();
     var t = document.getElementById('terminal');
-    if (employees.length === 0) {
-      print('  [INFO] No records found.', 't-info'); return;
-    }
+    if (employees.length === 0) { print('  [INFO] No records found.', 't-info'); return; }
 
     var old = document.getElementById('reportTable');
     if (old) old.remove();
@@ -652,11 +785,7 @@
     div.id = 'reportTable';
     div.style.cssText = 'margin:16px 0; overflow-x:auto;';
     div.innerHTML = `
-      <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:14px;">
-        📊 FULL PAYROLL REPORT
-      </div>
-
-      <!-- Summary Cards -->
+      <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:14px;">📊 FULL PAYROLL REPORT</div>
       <div style="display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;">
         <div style="flex:1;min-width:110px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:14px;text-align:center;">
           <div style="font-size:24px;font-weight:700;color:#a5b4fc;">${employees.length}</div>
@@ -679,8 +808,6 @@
           <div style="font-size:10px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Avg Net Pay</div>
         </div>
       </div>
-
-      <!-- Table -->
       <table style="width:100%;border-collapse:collapse;font-size:13px;font-family:'Inter',sans-serif;">
         <thead>
           <tr style="background:rgba(99,102,241,0.3);">
@@ -703,27 +830,17 @@
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#f87171;">Rs.${e.taxDeduction.toFixed(2)}</td>
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#4ade80;font-weight:700;">Rs.${e.netPay.toFixed(2)}</td>
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:center;">
-                <span style="background:rgba(99,102,241,0.25);color:#a5b4fc;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">
-                  ${taxSlab(e.grossPay)}
-                </span>
+                <span style="background:rgba(99,102,241,0.25);color:#a5b4fc;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">${taxSlab(e.grossPay)}</span>
               </td>
             </tr>
           `).join('')}
         </tbody>
         <tfoot>
           <tr style="background:rgba(99,102,241,0.25);font-weight:700;">
-            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">
-              TOTALS
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">
-              Rs.${tg.toFixed(2)}
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">
-              Rs.${tt.toFixed(2)}
-            </td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">
-              Rs.${tn.toFixed(2)}
-            </td>
+            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">TOTALS</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">Rs.${tg.toFixed(2)}</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">Rs.${tt.toFixed(2)}</td>
+            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">Rs.${tn.toFixed(2)}</td>
             <td style="border:1px solid rgba(99,102,241,0.4);"></td>
           </tr>
         </tfoot>
