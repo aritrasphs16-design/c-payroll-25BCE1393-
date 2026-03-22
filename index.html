@@ -8,19 +8,108 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ── CSS Variables for Easy Customization ── */
+  :root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --success: #4ade80;
+    --error: #f87171;
+    --warning: #fbbf24;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-attachment: fixed;
     min-height: 100vh;
     color: #fff;
     padding: 20px;
+    overflow-x: hidden;
+    animation: bgShift 15s ease infinite;
+  }
+
+  /* ── Animated Background Gradient ── */
+  @keyframes bgShift {
+    0%   { filter: hue-rotate(0deg) brightness(1); }
+    50%  { filter: hue-rotate(10deg) brightness(1.05); }
+    100% { filter: hue-rotate(0deg) brightness(1); }
+  }
+
+  /* ── Floating Animation ── */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-15px); }
+  }
+
+  /* ── Typewriter Effect ── */
+  @keyframes typewriter {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+
+  /* ── Fade In Stagger ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Glow Pulse ── */
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+    50%      { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+  }
+
+  /* ── Stat Counter Animation ── */
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Ripple Effect ── */
+  @keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+  }
+
+  /* ── Bounce Animation ── */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ── Slide In From Left ── */
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ── Slide In From Right ── */
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ── Shine Effect ── */
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* ── Gradient Animation ── */
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .header {
     text-align: center;
     padding: 30px 20px 20px;
     margin-bottom: 30px;
+    animation: fadeInUp 0.8s ease;
   }
+
   .header .badge {
     display: inline-block;
     background: rgba(99,102,241,0.2);
@@ -33,15 +122,24 @@
     padding: 5px 15px;
     border-radius: 20px;
     margin-bottom: 15px;
+    animation: slideInUp 0.6s ease 0.2s both;
   }
+
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   .header h1 {
     font-size: 36px;
     font-weight: 700;
-    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #667eea);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 8px;
+    animation: float 3s ease-in-out infinite, gradientShift 8s ease infinite;
   }
 
   .stats-bar {
@@ -50,7 +148,9 @@
     gap: 20px;
     margin-bottom: 30px;
     flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.3s both;
   }
+
   .stat-card {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
@@ -59,115 +159,387 @@
     padding: 16px 28px;
     text-align: center;
     min-width: 130px;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    animation: countUp 0.6s ease backwards;
   }
-  .stat-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-  .stat-card .stat-num { font-size: 28px; font-weight: 700; color: #a5b4fc; }
-  .stat-card .stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  .stat-card:nth-child(1) { animation-delay: 0.4s; }
+  .stat-card:nth-child(2) { animation-delay: 0.5s; }
+  .stat-card:nth-child(3) { animation-delay: 0.6s; }
+  .stat-card:nth-child(4) { animation-delay: 0.7s; }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+  }
+
+  .stat-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(102,126,234,0.3);
+  }
+
+  .stat-card .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #a5b4fc;
+    animation: countAnimation 2s ease-out;
+  }
+
+  @keyframes countAnimation {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .stat-card .stat-label {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+    animation: fadeInUp 0.8s ease 0.5s both;
+  }
 
   .layout { display: flex; gap: 24px; max-width: 1200px; margin: 0 auto; align-items: flex-start; }
 
-  .sidebar { width: 240px; flex-shrink: 0; }
-  .sidebar-title { font-size: 11px; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; padding-left: 12px; }
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    animation: slideInLeft 0.8s ease;
+  }
+
+  .sidebar-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+
   .nav-btn {
-    display: flex; align-items: center; gap: 12px;
-    width: 100%; padding: 13px 16px; margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px;
+    margin-bottom: 6px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px; color: #94a3b8;
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-    cursor: pointer; text-align: left; transition: all 0.2s;
+    border-radius: 12px;
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease backwards;
   }
-  .nav-btn:hover { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.3); color: #a5b4fc; transform: translateX(4px); }
-  .nav-btn.active { background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3)); border-color: rgba(99,102,241,0.5); color: #fff; }
-  .nav-btn .icon { font-size: 16px; width: 20px; text-align: center; }
-  .nav-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 10px 0; }
 
-  .main-panel { flex: 1; min-width: 0; }
+  .nav-btn:nth-child(1) { animation-delay: 0.1s; }
+  .nav-btn:nth-child(2) { animation-delay: 0.2s; }
+  .nav-btn:nth-child(3) { animation-delay: 0.3s; }
+  .nav-btn:nth-child(4) { animation-delay: 0.4s; }
+  .nav-btn:nth-child(5) { animation-delay: 0.5s; }
+
+  .nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(99,102,241,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .nav-btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .nav-btn:hover {
+    background: rgba(99,102,241,0.15);
+    border-color: rgba(99,102,241,0.3);
+    color: #a5b4fc;
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(99,102,241,0.2);
+  }
+
+  .nav-btn.active {
+    background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3));
+    border-color: rgba(99,102,241,0.5);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(99,102,241,0.4);
+  }
+
+  .nav-btn .icon { font-size: 16px; width: 20px; text-align: center; }
+
+  .nav-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 10px 0;
+  }
+
+  .main-panel { flex: 1; min-width: 0; animation: slideInRight 0.8s ease; }
 
   .terminal-wrapper {
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px; overflow: hidden; margin-bottom: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
   }
+
+  .terminal-wrapper:hover {
+    box-shadow: 0 12px 48px rgba(102,126,234,0.15);
+    border-color: rgba(99,102,241,0.2);
+  }
+
   .terminal-header {
-    display: flex; align-items: center; gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px 16px;
     background: rgba(255,255,255,0.03);
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot-red    { background: #ff5f57; }
-  .dot-yellow { background: #febc2e; }
-  .dot-green  { background: #28c840; }
-  .terminal-title { margin-left: 8px; font-size: 12px; color: #475569; font-weight: 500; }
-  .terminal-body {
-    padding: 16px; min-height: 280px; max-height: 500px;
-    overflow-y: auto; font-family: 'Courier New', monospace;
-    font-size: 13px; line-height: 1.7; color: #e2e8f0;
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: bounce 2s ease-in-out infinite;
   }
+
+  .dot-red    { background: #ff5f57; animation-delay: 0s; }
+  .dot-yellow { background: #febc2e; animation-delay: 0.2s; }
+  .dot-green  { background: #28c840; animation-delay: 0.4s; }
+
+  .terminal-title {
+    margin-left: 8px;
+    font-size: 12px;
+    color: #475569;
+    font-weight: 500;
+  }
+
+  .terminal-body {
+    padding: 16px;
+    min-height: 280px;
+    max-height: 500px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e2e8f0;
+    scroll-behavior: smooth;
+  }
+
   .terminal-body::-webkit-scrollbar { width: 4px; }
   .terminal-body::-webkit-scrollbar-track { background: transparent; }
-  .terminal-body::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 2px; }
+  .terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(99,102,241,0.4);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+  .terminal-body::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.7); }
 
-  .t-success { color: #4ade80; }
-  .t-error   { color: #f87171; }
+  .terminal-body > div {
+    animation: typewriter 0.3s ease forwards;
+  }
+
+  .t-success { color: #4ade80; font-weight: 500; }
+  .t-error   { color: #f87171; font-weight: 500; }
   .t-info    { color: #60a5fa; }
   .t-header  { color: #a5b4fc; font-weight: bold; }
   .t-divider { color: #334155; }
-  .t-value   { color: #fbbf24; }
+  .t-value   { color: #fbbf24; font-weight: bold; }
 
   .form-card {
     background: rgba(255,255,255,0.04);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px; padding: 28px; display: none;
-    animation: slideUp 0.3s ease;
+    border-radius: 20px;
+    padding: 28px;
+    display: none;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   }
+
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
   }
-  .form-card h3 { font-size: 18px; font-weight: 600; color: #e2e8f0; margin-bottom: 6px; }
-  .form-card .form-subtitle { font-size: 12px; color: #475569; margin-bottom: 24px; }
+
+  .form-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+    animation: slideInUp 0.4s ease 0.1s both;
+  }
+
+  .form-card .form-subtitle {
+    font-size: 12px;
+    color: #475569;
+    margin-bottom: 24px;
+    animation: slideInUp 0.4s ease 0.2s both;
+  }
+
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
   .form-grid.single { grid-template-columns: 1fr; }
-  .form-group { display: flex; flex-direction: column; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.4s ease backwards;
+  }
+
   .form-group.full { grid-column: 1 / -1; }
-  .form-group label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+  .form-group label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
   .form-group input {
     padding: 12px 16px;
     background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px; color: #e2e8f0;
-    font-family: 'Inter', sans-serif; font-size: 14px;
-    transition: all 0.2s; outline: none;
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
   }
-  .form-group input:focus { border-color: rgba(99,102,241,0.6); background: rgba(99,102,241,0.08); box-shadow: 0 0 0 3px rgba(99,102,241,0.15); }
+
+  .form-group input:focus {
+    border-color: rgba(99,102,241,0.8);
+    background: rgba(99,102,241,0.08);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15), inset 0 0 10px rgba(99,102,241,0.1);
+    transform: translateY(-2px);
+  }
+
   .form-group input::placeholder { color: #334155; }
 
-  .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-  .btn {
-    padding: 11px 24px; border: none; border-radius: 10px;
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 6px;
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.4s ease 0.3s both;
   }
-  .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+
+  .btn {
+    padding: 11px 24px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102,126,234,0.5);
+  }
+
   .btn-danger  { background: linear-gradient(135deg, #f87171, #ef4444); color: #fff; box-shadow: 0 4px 15px rgba(239,68,68,0.3); }
-  .btn-danger:hover  { transform: translateY(-2px); }
+  .btn-danger:hover  { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(239,68,68,0.5); }
+
   .btn-ghost   { background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.08); }
-  .btn-ghost:hover   { background: rgba(255,255,255,0.1); color: #e2e8f0; }
+  .btn-ghost:hover   { background: rgba(255,255,255,0.12); color: #e2e8f0; border-color: rgba(255,255,255,0.15); }
+
   .btn-success { background: linear-gradient(135deg, #4ade80, #22c55e); color: #000; box-shadow: 0 4px 15px rgba(74,222,128,0.3); }
-  .btn-success:hover { transform: translateY(-2px); }
+  .btn-success:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(74,222,128,0.5); }
 
-  .msg { margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 13px; display: none; }
-  .msg.error   { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: #f87171; display: block; }
-  .msg.success { background: rgba(74,222,128,0.1);  border: 1px solid rgba(74,222,128,0.3);  color: #4ade80;  display: block; }
+  .msg {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    display: none;
+    animation: slideInUp 0.4s ease;
+    border-left: 4px solid;
+  }
 
-  #updateFields { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .msg.error {
+    background: rgba(248,113,113,0.1);
+    border-color: #f87171;
+    color: #f87171;
+    display: block;
+  }
+
+  .msg.success {
+    background: rgba(74,222,128,0.1);
+    border-color: #4ade80;
+    color: #4ade80;
+    display: block;
+  }
+
+  #updateFields { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); animation: slideUp 0.4s ease; }
 
   /* ── FOOTER ── */
   .footer {
@@ -178,7 +550,9 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    animation: fadeInUp 1.2s ease;
   }
+
   .footer-grid {
     display: flex;
     justify-content: space-between;
@@ -187,6 +561,7 @@
     flex-wrap: wrap;
     margin-bottom: 30px;
   }
+
   .footer-brand .footer-logo {
     font-size: 18px;
     font-weight: 700;
@@ -196,12 +571,14 @@
     background-clip: text;
     margin-bottom: 8px;
   }
+
   .footer-brand p {
     color: #94a3b8;
     font-size: 13px;
     line-height: 1.6;
     max-width: 250px;
   }
+
   .footer-section h4 {
     font-size: 12px;
     font-weight: 600;
@@ -210,7 +587,9 @@
     letter-spacing: 1.5px;
     margin-bottom: 14px;
   }
+
   .footer-section ul { list-style: none; }
+
   .footer-section ul li {
     font-size: 13px;
     color: #cbd5e1;
@@ -218,9 +597,18 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: all 0.3s ease;
   }
+
+  .footer-section ul li:hover {
+    color: #e2e8f0;
+    transform: translateX(4px);
+  }
+
   .footer-section ul li span { color: #a5b4fc; font-size: 12px; }
+
   .footer-tech { display: flex; gap: 8px; flex-wrap: wrap; }
+
   .tech-tag {
     background: rgba(99,102,241,0.15);
     border: 1px solid rgba(99,102,241,0.35);
@@ -229,7 +617,15 @@
     font-weight: 500;
     padding: 4px 12px;
     border-radius: 20px;
+    transition: all 0.3s ease;
   }
+
+  .tech-tag:hover {
+    background: rgba(99,102,241,0.3);
+    border-color: rgba(99,102,241,0.6);
+    transform: translateY(-2px);
+  }
+
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.08);
     padding-top: 20px;
@@ -239,9 +635,16 @@
     flex-wrap: wrap;
     gap: 12px;
   }
+
   .footer-bottom .copyright { font-size: 13px; color: #94a3b8; }
   .footer-bottom .copyright span { color: #e2e8f0; font-weight: 600; }
-  .footer-bottom .copyright .heart { color: #f87171; }
+  .footer-bottom .copyright .heart { color: #f87171; animation: heartBeat 1.3s ease infinite; }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25%      { transform: scale(1.3); }
+  }
+
   .footer-made {
     font-size: 12px;
     color: #94a3b8;
@@ -249,15 +652,42 @@
     align-items: center;
     gap: 6px;
   }
+
   .footer-made .dot-live {
-    width: 6px; height: 6px;
+    width: 6px;
+    height: 6px;
     background: #4ade80;
     border-radius: 50%;
     animation: pulse 2s infinite;
+    box-shadow: 0 0 10px #4ade80;
   }
+
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  /* ── Mobile Responsive ── */
+  @media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; }
+    .header h1 { font-size: 28px; }
+    .stats-bar { gap: 12px; }
+    .stat-card { min-width: 100px; padding: 12px 20px; }
+    .form-grid { grid-template-columns: 1fr; }
+    
+    /* Reduce animations on mobile */
+    body {
+      animation: none;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   }
 </style>
 </head>
@@ -516,10 +946,32 @@
   function updateStats() {
     var tg = 0, tn = 0;
     employees.forEach(e => { tg += e.grossPay; tn += e.netPay; });
-    document.getElementById('statTotal').textContent = employees.length;
-    document.getElementById('statGross').textContent = tg > 0 ? (tg/1000).toFixed(1)+'K' : '0';
-    document.getElementById('statNet').textContent   = tn > 0 ? (tn/1000).toFixed(1)+'K' : '0';
-    document.getElementById('statAvg').textContent   = employees.length > 0 ? (tn/employees.length).toFixed(0) : '0';
+    animateCounter('statTotal', employees.length);
+    animateCounter('statGross', tg > 0 ? parseFloat((tg/1000).toFixed(1)) : 0, 'K');
+    animateCounter('statNet', tn > 0 ? parseFloat((tn/1000).toFixed(1)) : 0, 'K');
+    animateCounter('statAvg', employees.length > 0 ? Math.round(tn/employees.length) : 0);
+  }
+
+  // ── Animated Counter ──────────────────────────────────
+  function animateCounter(elementId, targetValue, suffix = '') {
+    const element = document.getElementById(elementId);
+    const currentValue = parseFloat(element.textContent) || 0;
+    const increment = (targetValue - currentValue) / 30;
+    let currentCount = currentValue;
+    let frames = 0;
+
+    function count() {
+      frames++;
+      currentCount += increment;
+      if (frames >= 30) {
+        currentCount = targetValue;
+      }
+      element.textContent = (suffix === 'K' ? currentCount.toFixed(1) : Math.floor(currentCount)) + suffix;
+      if (frames < 30) {
+        requestAnimationFrame(count);
+      }
+    }
+    count();
   }
 
   // ── Terminal ──────────────────────────────────────────
@@ -542,6 +994,7 @@
     document.querySelectorAll('.form-card').forEach(f => f.style.display='none');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).style.display = 'block';
+    document.querySelector(`button[onclick="showForm('${id}')"]`).classList.add('active');
     ['addMsg','updateMsg','deleteMsg'].forEach(m => {
       var el = document.getElementById(m);
       if (el) { el.className='msg'; el.textContent=''; }
@@ -551,9 +1004,10 @@
 
   function hideForm() {
     document.querySelectorAll('.form-card').forEach(f => f.style.display='none');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   }
 
-  // ── Tax ────────────��──────────────────────────────────
+  // ── Tax ────────────────────────────────────────────────
   function computeTax(g) {
     if      (g <= 10000) return 0;
     else if (g <= 20000) return g * 0.05;
@@ -626,7 +1080,7 @@
 
     var div = document.createElement('div');
     div.id = 'viewAllTable';
-    div.style.cssText = 'margin:16px 0; overflow-x:auto;';
+    div.style.cssText = 'margin:16px 0; overflow-x:auto; animation: slideInUp 0.4s ease;';
     div.innerHTML = `
       <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:12px;">
         👥 ALL EMPLOYEES — ${employees.length} record(s)
@@ -646,9 +1100,10 @@
         </thead>
         <tbody>
           ${employees.map((e,idx) => `
-            <tr style="background:${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'};transition:background 0.2s;"
-                onmouseover="this.style.background='rgba(99,102,241,0.12)'"
-                onmouseout="this.style.background='${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'}'">
+            <tr style="background:${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'};transition:background 0.2s; animation: slideInUp 0.4s ease ${idx*0.05}s backwards;"
+                onmouseover="this.style.background='rgba(99,102,241,0.12)'; this.style.transform='scale(1.01)'; this.style.boxShadow='0 4px 15px rgba(99,102,241,0.2)';"
+                onmouseout="this.style.background='${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'}'; this.style.transform='scale(1)'; this.style.boxShadow='none';"
+                style="transition: all 0.2s ease;">
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#60a5fa;font-weight:700;">${e.empId}</td>
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#e2e8f0;font-weight:500;">${e.name}</td>
               <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#cbd5e1;">Rs.${e.basicPay.toFixed(2)}</td>
@@ -692,7 +1147,7 @@
     print('  Gross Pay: Rs.' + e.grossPay.toFixed(2),                       't-value');
     print('  Tax (' + taxSlab(e.grossPay) + ')  : Rs.' + e.taxDeduction.toFixed(2), 't-error');
     print('  Net Pay  : Rs.' + e.netPay.toFixed(2),                         't-success');
-    print('  ─────────────────────────────────────', 't-divider');
+    print('  ─────��───────────────────────────────', 't-divider');
     hideForm();
   }
 
@@ -783,80 +1238,16 @@
 
     var div = document.createElement('div');
     div.id = 'reportTable';
-    div.style.cssText = 'margin:16px 0; overflow-x:auto;';
+    div.style.cssText = 'margin:16px 0; overflow-x:auto; animation: slideInUp 0.4s ease;';
     div.innerHTML = `
       <div style="color:#a5b4fc;font-weight:600;font-size:14px;margin-bottom:14px;">📊 FULL PAYROLL REPORT</div>
       <div style="display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:110px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:14px;text-align:center;">
+        <div style="flex:1;min-width:110px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:14px;text-align:center; transition: all 0.3s ease; animation: fadeInUp 0.4s ease;">
           <div style="font-size:24px;font-weight:700;color:#a5b4fc;">${employees.length}</div>
           <div style="font-size:10px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Employees</div>
         </div>
-        <div style="flex:1;min-width:110px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:14px;text-align:center;">
+        <div style="flex:1;min-width:110px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:14px;text-align:center; transition: all 0.3s ease; animation: fadeInUp 0.4s ease 0.1s both;">
           <div style="font-size:24px;font-weight:700;color:#fbbf24;">Rs.${tg.toFixed(0)}</div>
           <div style="font-size:10px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Gross</div>
         </div>
-        <div style="flex:1;min-width:110px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:12px;padding:14px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#f87171;">Rs.${tt.toFixed(0)}</div>
-          <div style="font-size:10px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Tax</div>
-        </div>
-        <div style="flex:1;min-width:110px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:12px;padding:14px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#4ade80;">Rs.${tn.toFixed(0)}</div>
-          <div style="font-size:10px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Total Net</div>
-        </div>
-        <div style="flex:1;min-width:110px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.3);border-radius:12px;padding:14px;text-align:center;">
-          <div style="font-size:24px;font-weight:700;color:#60a5fa;">Rs.${(tn/employees.length).toFixed(0)}</div>
-          <div style="font-size:10px;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:1px;">Avg Net Pay</div>
-        </div>
-      </div>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;font-family:'Inter',sans-serif;">
-        <thead>
-          <tr style="background:rgba(99,102,241,0.3);">
-            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">ID</th>
-            <th style="padding:12px 14px;text-align:left;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Name</th>
-            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Gross Pay</th>
-            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Tax</th>
-            <th style="padding:12px 14px;text-align:right;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Net Pay</th>
-            <th style="padding:12px 14px;text-align:center;border:1px solid rgba(99,102,241,0.3);color:#e2e8f0;font-weight:600;">Tax Slab</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${employees.map((e,idx) => `
-            <tr style="background:${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'};transition:background 0.2s;"
-                onmouseover="this.style.background='rgba(99,102,241,0.12)'"
-                onmouseout="this.style.background='${idx%2===0?'rgba(255,255,255,0.03)':'rgba(255,255,255,0.01)'}'">
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#60a5fa;font-weight:700;">${e.empId}</td>
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);color:#e2e8f0;font-weight:500;">${e.name}</td>
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#fbbf24;font-weight:600;">Rs.${e.grossPay.toFixed(2)}</td>
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#f87171;">Rs.${e.taxDeduction.toFixed(2)}</td>
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:right;color:#4ade80;font-weight:700;">Rs.${e.netPay.toFixed(2)}</td>
-              <td style="padding:11px 14px;border:1px solid rgba(255,255,255,0.05);text-align:center;">
-                <span style="background:rgba(99,102,241,0.25);color:#a5b4fc;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;">${taxSlab(e.grossPay)}</span>
-              </td>
-            </tr>
-          `).join('')}
-        </tbody>
-        <tfoot>
-          <tr style="background:rgba(99,102,241,0.25);font-weight:700;">
-            <td colspan="2" style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);color:#a5b4fc;font-weight:700;">TOTALS</td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#fbbf24;font-weight:700;">Rs.${tg.toFixed(2)}</td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#f87171;font-weight:700;">Rs.${tt.toFixed(2)}</td>
-            <td style="padding:12px 14px;border:1px solid rgba(99,102,241,0.4);text-align:right;color:#4ade80;font-weight:700;">Rs.${tn.toFixed(2)}</td>
-            <td style="border:1px solid rgba(99,102,241,0.4);"></td>
-          </tr>
-        </tfoot>
-      </table>
-    `;
-    t.appendChild(div);
-    t.scrollTop = t.scrollHeight;
-  }
-
-  // ── INIT ──────────────────────────────────────────────
-  updateStats();
-  print('  Welcome to Employee Payroll System', 't-header');
-  print('  ─────────────────────────────────────', 't-divider');
-  print('  Loaded ' + employees.length + ' employee record(s) from storage.', 't-info');
-  print('  Select an option from the left menu to get started.', '');
-  print('', '');
-</script>
-</body>
-</html>
+        <div style="flex:1;min-width:110px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);border-radius:12px;padding:14px;text-align:center; transition: all 0.3s
