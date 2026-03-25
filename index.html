@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Payroll Management System</title>
+<title>Advanced Payroll Management System - Enterprise</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <style>
@@ -26,9 +26,7 @@
   @keyframes slideInDown { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes slideInUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
-  @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(102,126,234,0.5); } 50% { box-shadow: 0 0 40px rgba(102,126,234,0.8); } }
   @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
 
   .header {
     padding: 50px 30px;
@@ -49,7 +47,6 @@
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
     animation: float 4s ease-in-out infinite;
     font-family: 'Outfit', sans-serif;
   }
@@ -65,7 +62,6 @@
     font-size: 12px;
     font-weight: 700;
     transition: all 0.3s ease;
-    font-family: 'Outfit', sans-serif;
   }
   .control-btn:hover { background: rgba(102,126,234,0.25); transform: translateY(-2px); }
 
@@ -85,18 +81,12 @@
     border-radius: 20px;
     padding: 28px;
     text-align: center;
-    cursor: pointer;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
   }
 
-  .stat-card:hover {
-    background: rgba(102,126,234,0.15);
-    border-color: var(--primary);
-    transform: translateY(-12px);
-  }
-
+  .stat-card:hover { background: rgba(102,126,234,0.15); transform: translateY(-12px); }
   .stat-card .stat-icon { font-size: 32px; margin-bottom: 12px; }
   .stat-card .stat-num { font-size: 42px; font-weight: 900; color: var(--primary); margin-bottom: 8px; }
   .stat-card .stat-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
@@ -132,23 +122,8 @@
     width: 3px;
     height: 18px;
     background: linear-gradient(180deg, var(--primary), var(--accent));
-    border-radius: 2px;
     transform: translateY(-50%);
   }
-
-  .search-box { margin-bottom: 20px; }
-  .search-box input {
-    width: 100%;
-    padding: 14px 16px;
-    background: rgba(0,0,0,0.3);
-    border: 1.5px solid rgba(102,126,234,0.2);
-    border-radius: 12px;
-    color: #e2e8f0;
-    font-family: 'Sora', sans-serif;
-    font-size: 13px;
-    transition: all 0.3s ease;
-  }
-  .search-box input:focus { border-color: var(--primary); background: rgba(102,126,234,0.1); }
 
   .nav-btn {
     display: flex;
@@ -165,8 +140,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Sora', sans-serif;
-    font-weight: 600;
   }
 
   .nav-btn:hover {
@@ -187,108 +160,54 @@
 
   .main-content { flex: 1; min-width: 0; }
 
-  .tabs { display: flex; gap: 8px; margin-bottom: 30px; border-bottom: 2px solid rgba(102,126,234,0.1); }
-  .tab-btn {
-    padding: 14px 24px;
-    background: transparent;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: #94a3b8;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Outfit', sans-serif;
-  }
-  .tab-btn:hover { color: #fff; }
-  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  .chart-container {
-    background: rgba(15,12,41,0.7);
-    backdrop-filter: blur(30px);
-    border: 1.5px solid rgba(102,126,234,0.3);
-    border-radius: 24px;
-    padding: 28px;
-    margin-bottom: 30px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-
-  .chart-container h3 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 20px; }
-  .chart-wrapper { position: relative; height: 320px; }
-
-  .advanced-table {
+  .terminal-wrapper {
     background: rgba(15,12,41,0.7);
     backdrop-filter: blur(30px);
     border: 1.5px solid rgba(102,126,234,0.3);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-
-  .table-header {
-    display: grid;
-    grid-template-columns: 80px 180px 120px 100px 120px 120px 140px 100px;
-    gap: 12px;
-    padding: 20px 24px;
-    background: linear-gradient(90deg, rgba(102,126,234,0.2), rgba(240,147,251,0.1));
-    border-bottom: 1px solid rgba(102,126,234,0.2);
-    font-weight: 800;
-    color: #a5b4fc;
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-
-  .table-row {
-    display: grid;
-    grid-template-columns: 80px 180px 120px 100px 120px 120px 140px 100px;
-    gap: 12px;
-    padding: 16px 24px;
-    border-bottom: 1px solid rgba(102,126,234,0.1);
-    align-items: center;
-    transition: all 0.3s ease;
-    font-size: 13px;
-  }
-
-  .table-row:hover { background: rgba(102,126,234,0.1); }
-
-  .employee-badge {
-    background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(240,147,251,0.1));
-    padding: 8px 12px;
-    border-radius: 10px;
-    font-weight: 800;
-    color: #60a5fa;
-    border: 1px solid rgba(102,126,234,0.3);
-  }
-
-  .filter-bar {
-    background: rgba(15,12,41,0.7);
-    backdrop-filter: blur(30px);
-    border: 1.5px solid rgba(102,126,234,0.3);
-    border-radius: 20px;
-    padding: 24px;
     margin-bottom: 30px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
 
-  .filter-item { display: flex; flex-direction: column; gap: 8px; }
-  .filter-item label { font-size: 11px; color: #94a3b8; font-weight: 800; text-transform: uppercase; }
-  .filter-item input, .filter-item select {
-    padding: 12px 14px;
-    background: rgba(0,0,0,0.3);
-    border: 1.5px solid rgba(102,126,234,0.2);
-    border-radius: 10px;
-    color: #e2e8f0;
-    font-family: 'Sora', sans-serif;
-    font-size: 13px;
-    transition: all 0.3s ease;
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(102,126,234,0.05));
+    border-bottom: 1px solid rgba(102,126,234,0.15);
   }
-  .filter-item input:focus, .filter-item select:focus { border-color: var(--primary); background: rgba(102,126,234,0.1); }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+
+  .dot-red { color: #ff5f57; }
+  .dot-yellow { color: #febc2e; }
+  .dot-green { color: #28c840; }
+
+  .terminal-title { margin-left: 14px; font-size: 12px; color: #94a3b8; font-weight: 600; }
+
+  .terminal-body {
+    padding: 24px;
+    min-height: 350px;
+    max-height: 600px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: #e2e8f0;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .t-success { color: #4ade80; font-weight: 600; }
+  .t-error { color: #f87171; font-weight: 600; }
+  .t-info { color: #60a5fa; }
+  .t-header { color: #a5b4fc; font-weight: bold; }
+  .t-value { color: #fbbf24; font-weight: bold; }
 
   .form-overlay {
     display: none;
@@ -324,7 +243,6 @@
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-family: 'Outfit', sans-serif;
   }
 
   .form-card p { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
@@ -345,7 +263,6 @@
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-family: 'Outfit', sans-serif;
   }
 
   .form-group input {
@@ -354,7 +271,6 @@
     border: 2px solid rgba(102,126,234,0.2);
     border-radius: 12px;
     color: #e2e8f0;
-    font-family: 'Sora', sans-serif;
     font-size: 14px;
     transition: all 0.3s ease;
   }
@@ -371,7 +287,6 @@
     padding: 14px 32px;
     border: none;
     border-radius: 12px;
-    font-family: 'Outfit', sans-serif;
     font-size: 12px;
     font-weight: 800;
     cursor: pointer;
@@ -404,9 +319,7 @@
     color: #fff;
   }
 
-  .btn-danger:hover { transform: translateY(-3px); }
-
-  .btn-export {
+  .btn-success {
     background: linear-gradient(135deg, #4ade80, #22c55e);
     color: #000;
     font-weight: 800;
@@ -446,13 +359,6 @@
     .layout { flex-direction: column; }
     .sidebar { width: 100%; position: static; }
   }
-
-  @media (max-width: 768px) {
-    .header { flex-direction: column; }
-    .header h1 { font-size: 36px; }
-    .form-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 <body>
@@ -461,12 +367,11 @@
 <div class="header">
   <div>
     <h1>💼 Payroll Manager</h1>
-    <p style="color: #cbd5e1; font-size: 14px; margin-top: 10px;">Professional Workforce Management & Analytics</p>
+    <p style="color: #cbd5e1; font-size: 14px; margin-top: 10px;">Professional Workforce Management</p>
   </div>
   <div class="header-controls">
     <button class="control-btn" onclick="exportData()">📥 Export CSV</button>
-    <button class="control-btn" onclick="showMsg('Feature coming soon!')">🌙 Dark Mode</button>
-    <button class="control-btn" onclick="showMsg('Aritra @ VIT | Advanced Payroll System V2.0')">ℹ️ About</button>
+    <button class="control-btn" onclick="showMsg('Theme coming soon!')">🌙 Dark Mode</button>
   </div>
 </div>
 
@@ -503,119 +408,39 @@
 <div class="layout">
   <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="search-box">
-      <input type="text" id="globalSearch" placeholder="🔍 Search...">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Core Features</div>
+      <button class="nav-btn" onclick="showAddForm()"><span class="icon">➕</span> Add Employee</button>
+      <button class="nav-btn" onclick="showViewAll()"><span class="icon">👥</span> View All</button>
+      <button class="nav-btn" onclick="showSearchForm()"><span class="icon">🔍</span> Search</button>
+      <button class="nav-btn" onclick="showUpdateForm()"><span class="icon">✏️</span> Update</button>
+      <button class="nav-btn" onclick="showDeleteForm()"><span class="icon">🗑️</span> Delete</button>
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-title">Quick Actions</div>
-      <button class="nav-btn" onclick="openAddForm()"><span class="icon">➕</span> Add Employee</button>
+      <div class="sidebar-title">Reports</div>
+      <button class="nav-btn" onclick="showPayslipForm()"><span class="icon">🧾</span> Payslip</button>
+      <button class="nav-btn" onclick="fullReport()"><span class="icon">📊</span> Full Report</button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Utilities</div>
+      <button class="nav-btn" onclick="clearTerminal()"><span class="icon">🔄</span> Clear Screen</button>
       <button class="nav-btn" onclick="exportData()"><span class="icon">📥</span> Export CSV</button>
-      <button class="nav-btn" onclick="generateReport()"><span class="icon">📄</span> Report</button>
-      <button class="nav-btn" onclick="confirmClear()"><span class="icon">🗑️</span> Clear All</button>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-title">Navigation</div>
-      <button class="nav-btn active" onclick="switchTab('dashboard')"><span class="icon">📈</span> Dashboard</button>
-      <button class="nav-btn" onclick="switchTab('employees')"><span class="icon">👥</span> Employees</button>
-      <button class="nav-btn" onclick="switchTab('settings')"><span class="icon">⚙️</span> Settings</button>
     </div>
   </div>
 
   <!-- MAIN -->
   <div class="main-content">
-    <!-- TABS -->
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('dashboard')">📈 Dashboard</button>
-      <button class="tab-btn" onclick="switchTab('employees')">👥 Employees</button>
-      <button class="tab-btn" onclick="switchTab('settings')">⚙️ Settings</button>
-    </div>
-
-    <!-- DASHBOARD -->
-    <div class="tab-content active" id="dashboard-tab">
-      <div class="chart-container">
-        <h3>Salary Distribution</h3>
-        <div class="chart-wrapper">
-          <canvas id="salaryChart"></canvas>
-        </div>
+    <!-- TERMINAL OUTPUT -->
+    <div class="terminal-wrapper">
+      <div class="terminal-header">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <span class="terminal-title">~ payroll.system › output</span>
       </div>
-
-      <div class="chart-container">
-        <h3>Monthly Trends</h3>
-        <div class="chart-wrapper">
-          <canvas id="trendsChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- EMPLOYEES -->
-    <div class="tab-content" id="employees-tab">
-      <div class="filter-bar">
-        <div class="filter-item">
-          <label>Department</label>
-          <select id="filterDept">
-            <option>All</option>
-            <option>HR</option>
-            <option>IT</option>
-            <option>Finance</option>
-          </select>
-        </div>
-        <div class="filter-item">
-          <label>Min Salary</label>
-          <input type="number" id="filterMin" placeholder="0">
-        </div>
-        <div class="filter-item">
-          <label>Max Salary</label>
-          <input type="number" id="filterMax" placeholder="999999">
-        </div>
-        <div class="filter-item" style="padding-top: 28px;">
-          <button class="btn btn-primary" onclick="applyFilters()">🔎 Filter</button>
-        </div>
-      </div>
-
-      <div class="advanced-table">
-        <div class="table-header">
-          <div>ID</div>
-          <div>Name</div>
-          <div>Dept</div>
-          <div>Basic</div>
-          <div>Gross</div>
-          <div>Tax</div>
-          <div>Net</div>
-          <div>Action</div>
-        </div>
-        <div id="employeesList"></div>
-      </div>
-    </div>
-
-    <!-- SETTINGS -->
-    <div class="tab-content" id="settings-tab">
-      <div class="chart-container">
-        <h3>System Settings</h3>
-        <div class="form-grid single">
-          <div class="form-group">
-            <label>Tax Rate (%)</label>
-            <input type="number" id="taxRate" value="10" min="0">
-          </div>
-          <div class="form-group">
-            <label>OT Rate per Hour (Rs.)</label>
-            <input type="number" id="otRate" value="150" min="0">
-          </div>
-          <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" id="companyName" value="Acme Corp">
-          </div>
-          <div class="form-group">
-            <label>Currency</label>
-            <input type="text" id="currency" value="Rs.">
-          </div>
-        </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="saveSettings()">💾 Save</button>
-          <button class="btn btn-danger" onclick="resetSettings()">🔄 Reset</button>
-        </div>
-      </div>
+      <div class="terminal-body" id="terminal"></div>
     </div>
   </div>
 </div>
@@ -623,15 +448,15 @@
 <!-- ADD FORM -->
 <div class="form-overlay" id="addFormOverlay">
   <div class="form-card">
-    <h3>➕ Add Employee</h3>
-    <p>Fill in employee details</p>
+    <h3>➕ Add New Employee</h3>
+    <p>Enter employee details</p>
     <div class="form-grid">
       <div class="form-group">
-        <label>ID</label>
+        <label>Employee ID</label>
         <input type="number" id="add_id" placeholder="1001">
       </div>
       <div class="form-group">
-        <label>Name</label>
+        <label>Full Name</label>
         <input type="text" id="add_name" placeholder="John Doe">
       </div>
       <div class="form-group">
@@ -643,17 +468,111 @@
         <input type="email" id="add_email" placeholder="john@company.com">
       </div>
       <div class="form-group">
-        <label>Basic Pay</label>
+        <label>Basic Pay (Rs.)</label>
         <input type="number" id="add_basic" placeholder="25000">
       </div>
       <div class="form-group">
         <label>OT Hours</label>
         <input type="number" id="add_ot" value="0">
       </div>
+      <div class="form-group">
+        <label>OT Rate (Rs./hour)</label>
+        <input type="number" id="add_rate" value="150">
+      </div>
     </div>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="addEmployee()">✅ Add</button>
-      <button class="btn btn-ghost" onclick="closeAddForm()">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeAllForms()">Cancel</button>
+    </div>
+    <div class="msg" id="addMsg"></div>
+  </div>
+</div>
+
+<!-- SEARCH FORM -->
+<div class="form-overlay" id="searchFormOverlay">
+  <div class="form-card">
+    <h3>🔍 Search Employee</h3>
+    <p>Find by ID</p>
+    <div class="form-grid single">
+      <div class="form-group">
+        <label>Employee ID</label>
+        <input type="number" id="search_id" placeholder="1001">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="searchEmployee()">🔍 Search</button>
+      <button class="btn btn-ghost" onclick="closeAllForms()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE FORM -->
+<div class="form-overlay" id="updateFormOverlay">
+  <div class="form-card">
+    <h3>✏️ Update Employee</h3>
+    <p>Load & edit employee</p>
+    <div class="form-grid single">
+      <div class="form-group">
+        <label>Employee ID</label>
+        <input type="number" id="upd_id" placeholder="1001">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="loadForUpdate()">📂 Load</button>
+      <button class="btn btn-ghost" onclick="closeAllForms()">Cancel</button>
+    </div>
+    <div id="updateFields" style="display:none; margin-top:24px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1);">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>New Basic Pay</label>
+          <input type="number" id="upd_basic">
+        </div>
+        <div class="form-group">
+          <label>New OT Hours</label>
+          <input type="number" id="upd_ot">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-success" onclick="updateEmployee()">✅ Save</button>
+      </div>
+    </div>
+    <div class="msg" id="updateMsg"></div>
+  </div>
+</div>
+
+<!-- DELETE FORM -->
+<div class="form-overlay" id="deleteFormOverlay">
+  <div class="form-card">
+    <h3>🗑️ Delete Employee</h3>
+    <p>Remove employee record</p>
+    <div class="form-grid single">
+      <div class="form-group">
+        <label>Employee ID</label>
+        <input type="number" id="del_id" placeholder="1001">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-danger" onclick="deleteEmployee()">🗑️ Delete</button>
+      <button class="btn btn-ghost" onclick="closeAllForms()">Cancel</button>
+    </div>
+    <div class="msg" id="deleteMsg"></div>
+  </div>
+</div>
+
+<!-- PAYSLIP FORM -->
+<div class="form-overlay" id="payslipFormOverlay">
+  <div class="form-card">
+    <h3>🧾 Generate Payslip</h3>
+    <p>Create salary slip</p>
+    <div class="form-grid single">
+      <div class="form-group">
+        <label>Employee ID</label>
+        <input type="number" id="slip_id" placeholder="1001">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generatePayslip()">🧾 Generate</button>
+      <button class="btn btn-ghost" onclick="closeAllForms()">Cancel</button>
     </div>
   </div>
 </div>
@@ -664,22 +583,39 @@
 </div>
 
 <script>
-  // ━━━━ STATE ━━━━
-  let employees = JSON.parse(localStorage.getItem('payroll_data') || '[]');
-  let settings = JSON.parse(localStorage.getItem('payroll_settings') || '{"taxRate":10,"otRate":150,"currency":"Rs.","company":"Acme Corp"}');
+  let employees = JSON.parse(localStorage.getItem('payroll_v2') || '[]');
 
-  // ━━━━ INIT ━━━━
-  window.addEventListener('DOMContentLoaded', function() {
-    updateStats();
-    displayEmployees();
-    loadSettings();
-  });
-
-  // ━━━━ HELPERS ━━━━
   function save() {
-    localStorage.setItem('payroll_data', JSON.stringify(employees));
+    localStorage.setItem('payroll_v2', JSON.stringify(employees));
     updateStats();
-    displayEmployees();
+  }
+
+  function findById(id) {
+    return employees.findIndex(e => e.empId === parseInt(id));
+  }
+
+  function updateStats() {
+    let tg = 0, tn = 0, tt = 0;
+    employees.forEach(e => { tg += e.grossPay; tn += e.netPay; tt += e.taxDeduction; });
+    document.getElementById('statTotal').textContent = employees.length;
+    document.getElementById('statGross').textContent = tg > 0 ? (tg/100000).toFixed(1)+'L' : '0';
+    document.getElementById('statNet').textContent = tn > 0 ? (tn/100000).toFixed(1)+'L' : '0';
+    document.getElementById('statAvg').textContent = employees.length > 0 ? Math.round(tn/employees.length) : '0';
+    document.getElementById('statTax').textContent = tt > 0 ? (tt/100000).toFixed(1)+'L' : '0';
+  }
+
+  function print(text, cls) {
+    let t = document.getElementById('terminal');
+    let line = document.createElement('div');
+    if (cls) line.className = cls;
+    line.textContent = text;
+    t.appendChild(line);
+    t.scrollTop = t.scrollHeight;
+  }
+
+  function clearTerminal() {
+    document.getElementById('terminal').innerHTML = '';
+    print('✅ Screen cleared', 't-success');
   }
 
   function showMsg(msg, isError = false) {
@@ -690,233 +626,186 @@
     setTimeout(() => div.remove(), 3000);
   }
 
-  // ━━━━ TAB SWITCH ━━━━
-  function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-
-    document.getElementById(tab + '-tab').classList.add('active');
-    document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
-
-    if (tab === 'dashboard') {
-      setTimeout(() => {
-        updateCharts();
-      }, 100);
-    }
-  }
-
-  // ━━━━ STATS ━━━━
-  function updateStats() {
-    let tg = 0, tn = 0, tt = 0;
-    employees.forEach(e => { tg += e.gross; tn += e.net; tt += e.tax; });
-    document.getElementById('statTotal').textContent = employees.length;
-    document.getElementById('statGross').textContent = (tg / 100000).toFixed(1) + 'L';
-    document.getElementById('statNet').textContent = (tn / 100000).toFixed(1) + 'L';
-    document.getElementById('statAvg').textContent = employees.length > 0 ? Math.round(tn / employees.length) : '0';
-    document.getElementById('statTax').textContent = (tt / 100000).toFixed(1) + 'L';
-  }
-
-  // ━━━━ ADD EMPLOYEE ━━━━
-  function openAddForm() {
-    document.getElementById('addFormOverlay').classList.add('show');
-  }
-
-  function closeAddForm() {
+  function closeAllForms() {
     document.getElementById('addFormOverlay').classList.remove('show');
+    document.getElementById('searchFormOverlay').classList.remove('show');
+    document.getElementById('updateFormOverlay').classList.remove('show');
+    document.getElementById('deleteFormOverlay').classList.remove('show');
+    document.getElementById('payslipFormOverlay').classList.remove('show');
   }
+
+  function showAddForm() { closeAllForms(); document.getElementById('addFormOverlay').classList.add('show'); }
+  function showSearchForm() { closeAllForms(); document.getElementById('searchFormOverlay').classList.add('show'); }
+  function showUpdateForm() { closeAllForms(); document.getElementById('updateFormOverlay').classList.add('show'); document.getElementById('updateFields').style.display = 'none'; }
+  function showDeleteForm() { closeAllForms(); document.getElementById('deleteFormOverlay').classList.add('show'); }
+  function showPayslipForm() { closeAllForms(); document.getElementById('payslipFormOverlay').classList.add('show'); }
+
+  function computeTax(g) { if (g <= 10000) return 0; else if (g <= 20000) return g * 0.05; else if (g <= 40000) return g * 0.10; else return g * 0.20; }
+  function taxSlab(g) { if (g <= 10000) return '0%'; else if (g <= 20000) return '5%'; else if (g <= 40000) return '10%'; else return '20%'; }
+
+  function setMsg(id, type, text) { let el = document.getElementById(id); el.className = 'msg ' + type; el.textContent = text; }
 
   function addEmployee() {
     let id = parseInt(document.getElementById('add_id').value);
-    let name = document.getElementById('add_name').value;
-    let dept = document.getElementById('add_dept').value || 'General';
-    let email = document.getElementById('add_email').value;
+    let name = document.getElementById('add_name').value.trim();
+    let dept = document.getElementById('add_dept').value.trim();
+    let email = document.getElementById('add_email').value.trim();
     let basic = parseFloat(document.getElementById('add_basic').value);
     let ot = parseFloat(document.getElementById('add_ot').value) || 0;
+    let rate = parseFloat(document.getElementById('add_rate').value) || 150;
 
-    if (!id || !name || !basic) {
-      showMsg('Fill all required fields!', true);
-      return;
-    }
+    if (!id || !name || !basic || !dept) { showMsg('Fill all fields!', true); return; }
+    if (findById(id) !== -1) { showMsg('ID exists!', true); return; }
 
-    if (employees.find(e => e.id === id)) {
-      showMsg('ID already exists!', true);
-      return;
-    }
-
-    let gross = basic + (ot * settings.otRate);
-    let tax = (gross * settings.taxRate) / 100;
+    let gross = basic + (ot * rate);
+    let tax = computeTax(gross);
     let net = gross - tax;
 
-    employees.push({ id, name, dept, email, basic, ot, gross, tax, net });
+    employees.push({ empId:id, name:name, dept:dept, email:email, basicPay:basic, otHours:ot, otRate:rate, grossPay:gross, taxDeduction:tax, netPay:net });
     save();
-    closeAddForm();
-    showMsg('✅ Employee added!');
+
+    print('', '');
+    print('✨ EMPLOYEE ADDED ✨', 't-success');
+    print('ID: ' + id + ' | Name: ' + name, 't-info');
+    print('Basic: Rs.' + basic.toFixed(2) + ' | Gross: Rs.' + gross.toFixed(2), '');
+    print('Tax: Rs.' + tax.toFixed(2) + ' | Net: Rs.' + net.toFixed(2), 't-value');
+
+    closeAllForms();
+    showMsg('✅ ' + name + ' added!');
     document.getElementById('add_id').value = '';
     document.getElementById('add_name').value = '';
     document.getElementById('add_dept').value = '';
     document.getElementById('add_email').value = '';
     document.getElementById('add_basic').value = '';
     document.getElementById('add_ot').value = '0';
+    document.getElementById('add_rate').value = '150';
   }
 
-  function deleteEmp(id) {
-    if (confirm('Delete employee?')) {
-      employees = employees.filter(e => e.id !== id);
-      save();
-      showMsg('✅ Deleted!');
-    }
-  }
-
-  // ━━━━ DISPLAY ━━━━
-  function displayEmployees(filtered = null) {
-    let data = filtered || employees;
-    let html = '';
-    if (data.length === 0) {
-      html = '<div style="padding:40px; text-align:center; grid-column:1/-1; color:#94a3b8;">No employees</div>';
-    } else {
-      data.forEach(e => {
-        html += `
-          <div class="table-row">
-            <div><span class="employee-badge">#${e.id}</span></div>
-            <div>${e.name}</div>
-            <div>${e.dept}</div>
-            <div>Rs.${e.basic}</div>
-            <div style="color:#fbbf24;">Rs.${e.gross.toFixed(0)}</div>
-            <div style="color:#f87171;">Rs.${e.tax.toFixed(0)}</div>
-            <div style="color:#4ade80;">Rs.${e.net.toFixed(0)}</div>
-            <div><button class="btn btn-ghost btn-small" onclick="deleteEmp(${e.id})">Delete</button></div>
-          </div>
-        `;
-      });
-    }
-    document.getElementById('employeesList').innerHTML = html;
-  }
-
-  // ━━━━ FILTER ━━━━
-  function applyFilters() {
-    let dept = document.getElementById('filterDept').value;
-    let min = parseFloat(document.getElementById('filterMin').value) || 0;
-    let max = parseFloat(document.getElementById('filterMax').value) || 999999;
-
-    let filtered = employees.filter(e => {
-      let deptOk = dept === 'All' || e.dept === dept;
-      let salOk = e.basic >= min && e.basic <= max;
-      return deptOk && salOk;
-    });
-
-    displayEmployees(filtered);
-    showMsg(`Found ${filtered.length} employees`);
-  }
-
-  // ━━━━ CHARTS ━━━━
-  function updateCharts() {
-    let salaryCtx = document.getElementById('salaryChart');
-    if (!salaryCtx) return;
-
-    let colors = ['#667eea', '#764ba2', '#f093fb', '#4ade80', '#fbbf24'];
-    
-    new Chart(salaryCtx, {
-      type: 'doughnut',
-      data: {
-        labels: employees.slice(0, 5).map(e => e.name),
-        datasets: [{
-          data: employees.slice(0, 5).map(e => e.net),
-          backgroundColor: colors
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-
-    let trendsCtx = document.getElementById('trendsChart');
-    new Chart(trendsCtx, {
-      type: 'line',
-      data: {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-        datasets: [{
-          label: 'Net Pay',
-          data: [50000, 55000, 52000, 58000],
-          borderColor: '#4ade80',
-          fill: false
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  }
-
-  // ━━━━ SETTINGS ━━━━
-  function loadSettings() {
-    document.getElementById('taxRate').value = settings.taxRate;
-    document.getElementById('otRate').value = settings.otRate;
-    document.getElementById('currency').value = settings.currency;
-    document.getElementById('companyName').value = settings.company;
-  }
-
-  function saveSettings() {
-    settings.taxRate = parseFloat(document.getElementById('taxRate').value);
-    settings.otRate = parseFloat(document.getElementById('otRate').value);
-    settings.currency = document.getElementById('currency').value;
-    settings.company = document.getElementById('companyName').value;
-    localStorage.setItem('payroll_settings', JSON.stringify(settings));
-    save();
-    showMsg('✅ Settings saved!');
-  }
-
-  function resetSettings() {
-    if (confirm('Reset to default?')) {
-      settings = { taxRate: 10, otRate: 150, currency: 'Rs.', company: 'Acme Corp' };
-      localStorage.setItem('payroll_settings', JSON.stringify(settings));
-      loadSettings();
-      save();
-      showMsg('✅ Reset!');
-    }
-  }
-
-  // ━━━━ EXPORT ━━━━
-  function exportData() {
-    if (employees.length === 0) {
-      showMsg('No data to export!', true);
-      return;
-    }
-
-    let csv = 'ID,Name,Dept,Basic,Gross,Tax,Net\n';
+  function showViewAll() {
+    if (employees.length === 0) { print('ℹ️ No records', 't-info'); return; }
+    let html = '<table style="width:100%;color:#fff;"><tr style="background:rgba(102,126,234,0.3);"><th style="padding:10px;text-align:left;">ID</th><th>Name</th><th>Dept</th><th style="text-align:right;">Basic</th><th style="text-align:right;">Gross</th><th style="text-align:right;">Tax</th><th style="text-align:right;">Net</th></tr>';
     employees.forEach(e => {
-      csv += `${e.id},"${e.name}","${e.dept}",${e.basic},${e.gross.toFixed(2)},${e.tax.toFixed(2)},${e.net.toFixed(2)}\n`;
+      html += '<tr style="border-bottom:1px solid rgba(102,126,234,0.2);"><td style="padding:8px;color:#60a5fa;font-weight:700;">' + e.empId + '</td><td>' + e.name + '</td><td>' + e.dept + '</td><td style="text-align:right;">Rs.' + e.basicPay.toFixed(0) + '</td><td style="text-align:right;color:#fbbf24;">Rs.' + e.grossPay.toFixed(0) + '</td><td style="text-align:right;color:#f87171;">Rs.' + e.taxDeduction.toFixed(0) + '</td><td style="text-align:right;color:#4ade80;">Rs.' + e.netPay.toFixed(0) + '</td></tr>';
     });
+    html += '</table>';
+    document.getElementById('terminal').innerHTML = html;
+  }
 
+  function searchEmployee() {
+    let id = parseInt(document.getElementById('search_id').value);
+    let i = findById(id);
+    if (i === -1) { print('❌ Not found', 't-error'); return; }
+    let e = employees[i];
+    print('', '');
+    print('🔍 SEARCH RESULT', 't-header');
+    print('ID: ' + e.empId + ' | Name: ' + e.name, 't-info');
+    print('Department: ' + e.dept + ' | Email: ' + e.email, '');
+    print('Gross: Rs.' + e.grossPay.toFixed(2), 't-value');
+    print('Tax: Rs.' + e.taxDeduction.toFixed(2), 't-error');
+    print('Net: Rs.' + e.netPay.toFixed(2), 't-success');
+    closeAllForms();
+  }
+
+  function loadForUpdate() {
+    let id = parseInt(document.getElementById('upd_id').value);
+    let i = findById(id);
+    if (i === -1) { setMsg('updateMsg','error','❌ Not found'); return; }
+    document.getElementById('upd_basic').value = employees[i].basicPay;
+    document.getElementById('upd_ot').value = employees[i].otHours;
+    document.getElementById('updateFields').style.display = 'block';
+    setMsg('updateMsg','success','✅ Loaded. Edit and save.');
+  }
+
+  function updateEmployee() {
+    let id = parseInt(document.getElementById('upd_id').value);
+    let i = findById(id);
+    if (i === -1) { setMsg('updateMsg','error','❌ Not found'); return; }
+    
+    employees[i].basicPay = parseFloat(document.getElementById('upd_basic').value);
+    employees[i].otHours = parseFloat(document.getElementById('upd_ot').value);
+    employees[i].grossPay = employees[i].basicPay + (employees[i].otHours * employees[i].otRate);
+    employees[i].taxDeduction = computeTax(employees[i].grossPay);
+    employees[i].netPay = employees[i].grossPay - employees[i].taxDeduction;
+    save();
+    
+    print('', '');
+    print('✨ UPDATED ✨', 't-success');
+    print('New Gross: Rs.' + employees[i].grossPay.toFixed(2), 't-value');
+    print('New Net: Rs.' + employees[i].netPay.toFixed(2), 't-success');
+    setMsg('updateMsg','success','✅ Saved!');
+  }
+
+  function deleteEmployee() {
+    let id = parseInt(document.getElementById('del_id').value);
+    let i = findById(id);
+    if (i === -1) { setMsg('deleteMsg','error','❌ Not found'); return; }
+    if (!confirm('Delete ' + employees[i].name + '?')) return;
+    employees.splice(i, 1);
+    save();
+    print('🗑️ Deleted', 't-error');
+    setMsg('deleteMsg','success','✅ Deleted!');
+    closeAllForms();
+  }
+
+  function generatePayslip() {
+    let id = parseInt(document.getElementById('slip_id').value);
+    let i = findById(id);
+    if (i === -1) { print('❌ Not found', 't-error'); return; }
+    let e = employees[i];
+    print('', '');
+    print('╔════════════════════════════════════╗', 't-header');
+    print('║         SALARY PAYSLIP             ║', 't-header');
+    print('╚════════════════════════════════════╝', 't-header');
+    print('Employee: ' + e.name + ' (ID: ' + e.empId + ')', 't-info');
+    print('Department: ' + e.dept, '');
+    print('────────────────────────────────────', '');
+    print('Basic Pay: Rs.' + e.basicPay.toFixed(2), '');
+    print('OT: ' + e.otHours + 'h × Rs.' + e.otRate + ' = Rs.' + (e.otHours*e.otRate).toFixed(2), '');
+    print('────────────────────────────────────', '');
+    print('GROSS PAY: Rs.' + e.grossPay.toFixed(2), 't-value');
+    print('────────────────────────────────────', '');
+    print('Tax (' + taxSlab(e.grossPay) + '): Rs.' + e.taxDeduction.toFixed(2), 't-error');
+    print('────────────────────────────────────', '');
+    print('NET PAY: Rs.' + e.netPay.toFixed(2), 't-success');
+    print('════════════════════════════════════', 't-header');
+    closeAllForms();
+  }
+
+  function fullReport() {
+    if (employees.length === 0) { print('ℹ️ No records', 't-info'); return; }
+    let tg = 0, tt = 0, tn = 0;
+    employees.forEach(e => { tg += e.grossPay; tt += e.taxDeduction; tn += e.netPay; });
+    print('', '');
+    print('══════════════════════════════════════════════════════', 't-header');
+    print('                  FULL PAYROLL REPORT                 ', 't-header');
+    print('══════════════════════════════════════════════════════', 't-header');
+    print('Total Employees: ' + employees.length, 't-info');
+    print('Total Gross Pay: Rs.' + tg.toFixed(2), 't-value');
+    print('Total Tax Deduction: Rs.' + tt.toFixed(2), 't-error');
+    print('Total Net Pay: Rs.' + tn.toFixed(2), 't-success');
+    print('Average Net Pay: Rs.' + (tn/employees.length).toFixed(2), 't-value');
+    print('══════════════════════════════════════════════════════', 't-header');
+  }
+
+  function exportData() {
+    if (employees.length === 0) { showMsg('No data to export!', true); return; }
+    let csv = 'ID,Name,Department,Email,Basic,OT,Gross,Tax,Net\n';
+    employees.forEach(e => {
+      csv += `${e.empId},"${e.name}","${e.dept}","${e.email}",${e.basicPay},${e.otHours},${e.grossPay.toFixed(2)},${e.taxDeduction.toFixed(2)},${e.netPay.toFixed(2)}\n`;
+    });
     let blob = new Blob([csv], { type: 'text/csv' });
     let url = URL.createObjectURL(blob);
     let a = document.createElement('a');
     a.href = url;
-    a.download = 'payroll.csv';
+    a.download = 'payroll_' + new Date().toISOString().split('T')[0] + '.csv';
     a.click();
     showMsg('✅ Exported!');
   }
 
-  function generateReport() {
-    if (employees.length === 0) {
-      showMsg('No data!', true);
-      return;
-    }
-
-    let tg = employees.reduce((s, e) => s + e.gross, 0);
-    let tt = employees.reduce((s, e) => s + e.tax, 0);
-    let tn = employees.reduce((s, e) => s + e.net, 0);
-
-    alert(`PAYROLL REPORT\n\nEmployees: ${employees.length}\nGross: Rs.${tg.toFixed(0)}\nTax: Rs.${tt.toFixed(0)}\nNet: Rs.${tn.toFixed(0)}`);
-  }
-
-  function confirmClear() {
-    if (confirm('Delete ALL data?')) {
-      if (confirm('LAST WARNING - Cannot undo!')) {
-        employees = [];
-        localStorage.setItem('payroll_data', '[]');
-        updateStats();
-        displayEmployees();
-        showMsg('✅ Cleared!');
-      }
-    }
-  }
+  // INIT
+  updateStats();
+  print('👋 Welcome to Payroll System', 't-header');
+  print('✨ Click menu to start', 't-info');
 </script>
 
 </body>
