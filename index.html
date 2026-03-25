@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Employee Payroll System - Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,7 +20,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sora', sans-serif;
     background: linear-gradient(-45deg, #0f0c29 0%, #302b63 25%, #24243e 50%, #0f0c29 75%);
     background-size: 400% 400%;
     min-height: 100vh;
@@ -29,6 +29,7 @@
     animation: gradientBG 15s ease infinite;
     position: relative;
     overflow-x: hidden;
+    font-weight: 500;
   }
 
   @keyframes gradientBG {
@@ -37,7 +38,6 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Floating background elements */
   body::before {
     content: '';
     position: fixed;
@@ -56,7 +56,6 @@
     50% { transform: translate(50px, 50px); }
   }
 
-  /* Animated lines */
   @keyframes slideInDown { from { opacity: 0; transform: translateY(-100px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes slideInUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
@@ -69,7 +68,6 @@
   @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
   @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  @keyframes colorShift { 0% { color: #667eea; } 50% { color: #f093fb; } 100% { color: #667eea; } }
 
   /* ━━━━ HEADER STYLES ━━━━ */
   .header {
@@ -99,9 +97,9 @@
     background: rgba(102,126,234,0.15);
     border: 2px solid var(--primary);
     color: #a5b4fc;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     padding: 10px 25px;
     border-radius: 50px;
@@ -109,6 +107,7 @@
     box-shadow: 0 0 30px rgba(102,126,234,0.3), inset 0 0 20px rgba(102,126,234,0.1);
     animation: slideInUp 0.8s ease 0.2s both;
     transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
   }
 
   .header .badge:hover {
@@ -117,8 +116,8 @@
   }
 
   .header h1 {
-    font-size: 56px;
-    font-weight: 800;
+    font-size: 64px;
+    font-weight: 900;
     margin-bottom: 10px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     -webkit-background-clip: text;
@@ -127,6 +126,8 @@
     animation: slideInUp 0.8s ease 0.1s both, float 4s ease-in-out infinite;
     text-shadow: 0 10px 30px rgba(102,126,234,0.2);
     letter-spacing: -2px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
   }
 
   .header p {
@@ -136,6 +137,7 @@
     animation: slideInUp 0.8s ease 0.3s both;
     font-weight: 500;
     letter-spacing: 1px;
+    font-family: 'Sora', sans-serif;
   }
 
   .header::after {
@@ -213,11 +215,12 @@
   .stat-card:hover::after { opacity: 1; }
 
   .stat-card .stat-num {
-    font-size: 42px;
-    font-weight: 800;
+    font-size: 48px;
+    font-weight: 900;
     color: var(--primary);
     margin-bottom: 12px;
     animation: scaleIn 0.8s ease 0.3s both;
+    font-family: 'Outfit', sans-serif;
   }
 
   .stat-card .stat-label {
@@ -225,8 +228,9 @@
     color: #94a3b8;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 600;
+    font-weight: 700;
     animation: slideInUp 0.8s ease 0.4s both;
+    font-family: 'Sora', sans-serif;
   }
 
   /* ━━━━ LAYOUT STYLES ━━━━ */
@@ -258,13 +262,14 @@
 
   .sidebar-title {
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 2.5px;
     margin-bottom: 20px;
     padding-left: 20px;
     position: relative;
+    font-family: 'Outfit', sans-serif;
   }
 
   .sidebar-title::before {
@@ -299,6 +304,7 @@
     position: relative;
     overflow: hidden;
     animation: slideInLeft 0.6s ease backwards;
+    font-family: 'Sora', sans-serif;
   }
 
   .nav-btn:nth-child(2) { animation-delay: 0.15s; }
@@ -409,7 +415,7 @@
     font-size: 12px;
     color: #94a3b8;
     font-weight: 600;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     letter-spacing: 0.5px;
   }
 
@@ -418,11 +424,12 @@
     min-height: 350px;
     max-height: 600px;
     overflow-y: auto;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     line-height: 2;
     color: #e2e8f0;
     background: rgba(0,0,0,0.2);
+    font-weight: 500;
   }
 
   .terminal-body::-webkit-scrollbar { width: 6px; }
@@ -475,8 +482,8 @@
   @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); filter: blur(10px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
 
   .form-card h3 {
-    font-size: 26px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 900;
     color: #fff;
     margin-bottom: 8px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -484,6 +491,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: slideInDown 0.5s ease;
+    font-family: 'Outfit', sans-serif;
   }
 
   .form-card .form-subtitle {
@@ -491,6 +499,7 @@
     color: #94a3b8;
     margin-bottom: 32px;
     animation: slideInDown 0.5s ease 0.1s both;
+    font-family: 'Sora', sans-serif;
   }
 
   .form-grid {
@@ -520,6 +529,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: 'Outfit', sans-serif;
   }
 
   .form-group label::before {
@@ -536,11 +546,12 @@
     border: 2px solid rgba(102,126,234,0.2);
     border-radius: 14px;
     color: #e2e8f0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-size: 14px;
     transition: all 0.3s ease;
     outline: none;
     position: relative;
+    font-weight: 500;
   }
 
   .form-group input::placeholder { color: #475569; }
@@ -565,7 +576,7 @@
     padding: 14px 32px;
     border: none;
     border-radius: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -655,6 +666,7 @@
     font-weight: 600;
     backdrop-filter: blur(10px);
     animation: slideInDown 0.4s ease;
+    font-family: 'Sora', sans-serif;
   }
 
   .msg.error {
@@ -705,17 +717,20 @@
 
   .footer-section h4 {
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 900;
     color: var(--primary);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     margin-bottom: 20px;
+    font-family: 'Outfit', sans-serif;
   }
 
   .footer-section p, .footer-section ul {
     color: #cbd5e1;
     font-size: 13px;
     line-height: 1.8;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
   }
 
   .footer-section ul { list-style: none; }
@@ -724,6 +739,7 @@
     margin-bottom: 12px;
     transition: all 0.3s ease;
     cursor: default;
+    font-family: 'Sora', sans-serif;
   }
 
   .footer-section ul li:hover {
@@ -742,10 +758,11 @@
     border: 1px solid rgba(102,126,234,0.4);
     color: #c4b5fd;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 8px 16px;
     border-radius: 25px;
     transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
   }
 
   .tech-tag:hover {
@@ -761,6 +778,8 @@
     text-align: center;
     font-size: 13px;
     color: #94a3b8;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
   }
 
   .footer-bottom .heart { color: #f87171; animation: pulse 1.3s ease-in-out infinite; display: inline-block; }
